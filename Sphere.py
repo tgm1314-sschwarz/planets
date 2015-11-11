@@ -64,13 +64,15 @@ class Sphere(object):
 
 
 
+
 def main():
     pygame.init()
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
     #camera settings
-    gluPerspective(50.0, (display[0]/display[1]), 1, 50.0)
+
+    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
     glTranslatef(0.0, 0.0, -10.0)
 
     s = Sphere(1.0, 50, 50)
@@ -80,8 +82,12 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     s.rotate += 1
-                if event.key == pygame.K_DOWN:
-                    s.rotate -= 1
+                if event.key == pygame.K_f:
+                    glTranslatef(0.1,0.,0)
+                if event.key == pygame.K_g:
+                    glTranslatef(-0.1,0.,0)
+                if event.key == pygame.K_MINUS:
+                    pass
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
