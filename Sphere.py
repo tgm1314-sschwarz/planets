@@ -13,6 +13,7 @@ class Sphere(object):
         self.lats = lats
         self.longs = longs
         self.rotate = 1
+        self.perspective = 50
 
     def draw_sphere(self):
         for i in range(self.lats + 1):
@@ -41,7 +42,6 @@ class Sphere(object):
 
             glEnd()
 
-
     def light(self):
         sun1 = (0.0, 2.0, -1.0, 1.0)
         sun2 = (0.7, 0.7, 0.7, 1.0)
@@ -58,52 +58,42 @@ class Sphere(object):
         glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE)
 
 
-
-
-
 def main():
     pygame.init()
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    #camera settings
-
-    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
-    glTranslatef(0.0, 0.0, -10.0)
-
     s = Sphere(1.0, 50, 50)
+
+    #camera settings
+    gluPerspective(s.perspective, (display[0]/display[1]), 1, 50.0)
+    glTranslatef(0.0, 0.0, -10.0)
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     s.rotate += 1
-                if event.key == pygame.K_f:
-                    glTranslatef(0.1,0.,0)
-                if event.key == pygame.K_g:
-                    glTranslatef(-0.1,0.,0)
-                if event.key == pygame.K_MINUS:
-                    pass
+                if event.key == pygame.K_DOWN:
+                    s.rotate -= 1
+                if event.key == pygame.K_LEFT:
+                    glTranslatef(0.0, 0.0, 1.0)
+                if event.key == pygame.K_RIGHT:
+                    glTranslatef(0.0, 0.0, -1.0)
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-
 
         glRotatef(s.rotate, 1, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         glRotatef(s.rotate, 10, 10, 10)
 
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
         s.draw_sphere()
-
-
-
-
         s.light()
-
-
 
         pygame.display.flip()
         pygame.time.wait(10)
