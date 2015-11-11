@@ -25,8 +25,8 @@ class Sphere(object):
             zr1 = cos(lat1)
 
             #glBegin(GL_POINTS)
-            #glBegin(GL_LINES)
-            glBegin(GL_QUAD_STRIP)
+            glBegin(GL_LINE_STRIP)
+            #glBegin(GL_QUAD_STRIP)
 
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
@@ -80,7 +80,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        glRotatef(s.rotate, 10, 10, 10)
+        glRotatef(s.rotate, 1, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         s.draw_sphere()
