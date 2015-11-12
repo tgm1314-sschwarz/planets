@@ -63,10 +63,10 @@ def main():
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    s = Sphere(1.0, 50, 50)
+    s = Sphere(1.0, 25, 25)
 
     #camera settings
-    gluPerspective(s.perspective, (display[0]/display[1]), 1, 50.0)
+    gluPerspective(20, (display[0]/display[1]), 1, 50.0)
     glTranslatef(0.0, 0.0, -10.0)
 
     while True:
