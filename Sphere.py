@@ -25,19 +25,6 @@ class Sphere(object):
             z1 = sin(lat1)
             zr1 = cos(lat1)
 
-            #glBegin(GL_POINTS)
-<<<<<<< HEAD
-
-            glBegin(GL_LINE_STRIP)
-            #glBegin(GL_QUAD_STRIP)
-
-
-=======
-            glBegin(GL_LINE_STRIP)
-            #glBegin(GL_QUAD_STRIP)
-            #glBegin(GL_LINE_STRIP)
->>>>>>> origin/master
-
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
                 x = cos(lng)
@@ -73,21 +60,10 @@ def main():
 
     s = Sphere(1.0, 25, 25)
 
-<<<<<<< HEAD
-    gluPerspective(5, (display[0]/display[1]), 1, 50.0)
-    glTranslatef(0.0, 0.0, -10.0)
-
-    s = Sphere(1.0, 50, 50)
-
-
-
-
-=======
     #camera settings
-    gluPerspective(20, (display[0]/display[1]), 1, 50.0)
+    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
     glTranslatef(0.0, 0.0, -10.0)
 
->>>>>>> origin/master
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -95,44 +71,23 @@ def main():
                     s.rotate += 1
                 if event.key == pygame.K_DOWN:
                     s.rotate -= 1
-<<<<<<< HEAD
                 if event.key == pygame.K_f:
                     glTranslatef(0.1,0.,0)
                 if event.key == pygame.K_g:
                     glTranslatef(-0.1,0.,0)
-=======
                 if event.key == pygame.K_LEFT:
                     glTranslatef(0.0, 0.0, 1.0)
                 if event.key == pygame.K_RIGHT:
                     glTranslatef(0.0, 0.0, -1.0)
 
->>>>>>> origin/master
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
-<<<<<<< HEAD
 
         glRotatef(s.rotate, 1, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-        glRotatef(s.rotate, 10, 10, 10)
-
-=======
-        glRotatef(s.rotate, 1, 1, 1)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
->>>>>>> origin/master
-
-        glRotatef(s.rotate, 10, 10, 10)
-
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-<<<<<<< HEAD
         s.draw_sphere()
-
-=======
-
-        s.draw_sphere()
->>>>>>> origin/master
         s.light()
 
         pygame.display.flip()
