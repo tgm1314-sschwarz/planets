@@ -25,6 +25,7 @@ class Sphere(object):
             z1 = sin(lat1)
             zr1 = cos(lat1)
 
+<<<<<<< HEAD
             #glBegin(GL_POINTS)
 
 
@@ -39,6 +40,8 @@ class Sphere(object):
             #glBegin(GL_LINE_STRIP)
 
 
+=======
+>>>>>>> origin/master
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
                 x = cos(lng)
@@ -72,6 +75,7 @@ def main():
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
+<<<<<<< HEAD
     s = Sphere(1.0, 50, 50)
 
 
@@ -88,6 +92,13 @@ def main():
     #gluPerspective(s.perspective, (display[0]/display[1]), 1, 50.0)
     #glTranslatef(0.0, 0.0, -10.0)
 
+=======
+    s = Sphere(1.0, 25, 25)
+
+    #camera settings
+    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
+    glTranslatef(0.0, 0.0, -10.0)
+>>>>>>> origin/master
 
     while True:
         for event in pygame.event.get():
@@ -96,12 +107,18 @@ def main():
                     s.rotate += 1
                 if event.key == pygame.K_DOWN:
                     s.rotate -= 1
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
                 if event.key == pygame.K_f:
                     glTranslatef(0.1,0.,0)
                 if event.key == pygame.K_g:
                     glTranslatef(-0.1,0.,0)
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
                 if event.key == pygame.K_LEFT:
                     glTranslatef(0.0, 0.0, 1.0)
                 if event.key == pygame.K_RIGHT:
@@ -113,6 +130,7 @@ def main():
                 pygame.quit()
                 quit()
 
+<<<<<<< HEAD
 
 
         glRotatef(s.rotate, 1, 1, 1)
@@ -135,6 +153,12 @@ def main():
 
         s.draw_sphere()
 
+=======
+
+        glRotatef(s.rotate, 1, 1, 1)
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+        s.draw_sphere()
+>>>>>>> origin/master
         s.light()
 
         pygame.display.flip()
