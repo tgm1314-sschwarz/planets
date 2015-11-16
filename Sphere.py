@@ -8,10 +8,11 @@ from math import *
 
 class Sphere(object):
 
-    def __init__(self, r, lats, longs):
+    def __init__(self, r, lats, longs, pos):
         self.r = r
         self.lats = lats
         self.longs = longs
+        self.pos = pos
         self.rotate = 1
         self.perspective = 50
 
@@ -25,6 +26,8 @@ class Sphere(object):
             z1 = sin(lat1)
             zr1 = cos(lat1)
 
+            glBegin(GL_LINE_STRIP)
+
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
                 x = cos(lng)
@@ -36,6 +39,9 @@ class Sphere(object):
                 glVertex3f(x * zr1, y * zr1, z1)
 
             glEnd()
+
+    def draw_sphere2(self):
+        pass
 
     def light(self):
         sun1 = (0.0, 2.0, -1.0, 1.0)
@@ -52,47 +58,5 @@ class Sphere(object):
         glEnable(GL_COLOR_MATERIAL)
         glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE)
 
-
-def main():
-    pygame.init()
-    display = (1600, 900)
-    pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
-
-    s = Sphere(1.0, 25, 25)
-
-    #camera settings
-    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
-    glTranslatef(0.0, 0.0, -10.0)
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    s.rotate += 1
-                if event.key == pygame.K_DOWN:
-                    s.rotate -= 1
-                if event.key == pygame.K_f:
-                    glTranslatef(0.1,0.,0)
-                if event.key == pygame.K_g:
-                    glTranslatef(-0.1,0.,0)
-                if event.key == pygame.K_LEFT:
-                    glTranslatef(0.0, 0.0, 1.0)
-                if event.key == pygame.K_RIGHT:
-                    glTranslatef(0.0, 0.0, -1.0)
-
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-
-
-        glRotatef(s.rotate, 1, 1, 1)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        s.draw_sphere()
-        s.light()
-
-        pygame.display.flip()
-        pygame.time.wait(10)
-
-
-if __name__ == '__main__':
-    main()
+    def position(self):
+        glTranslatef(self.pos[0], self.pos[1], self.pos[2])
