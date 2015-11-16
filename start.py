@@ -15,7 +15,7 @@ def main():
 
     # camera settings
     gluPerspective(30, (display[0]/display[1]), 1, 50.0)
-    glTranslatef(0.0, 0.0, -10.0)
+    glTranslatef(0.0, 0.0, -30.0)
 
     # planet1
     p1pos = (0.0, 0.0, 0.0)
@@ -23,9 +23,12 @@ def main():
     p1.position()
 
     # planet2
-    glTranslatef(1,0,0)
-    p2pos = (3.0, 0.0, 0.0)
+    p2pos = (3.0, 2.0, 0.0)
     p2 = Sphere(2.0, 25, 25, p2pos)
+
+    #planet3
+    p3pos = (1.0, 2.0, 0.0)
+    p3 = Sphere(0.5, 25, 25, p3pos)
 
 
     # sun
@@ -53,13 +56,24 @@ def main():
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+
         p1.draw_sphere()
         p1.light()
-        glRotatef(p1.rotate, 1, 1, 1)
+        glRotatef(p1.rotate, 1, 1, 0)
 
+
+        glPushMatrix()
+        glTranslatef(3,0,0)
         p2.draw_sphere()
         p2.light()
+        glPopMatrix()
 
+        glPushMatrix()
+        glRotatef(p3.rotate, 1, 1, 1)
+        glTranslatef(-3,0,0)
+        p3.draw_sphere()
+        p3.light()
+        glPopMatrix()
         #sun.draw_sphere()
         #sun.light()
 
