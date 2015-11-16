@@ -1,3 +1,5 @@
+from pygame import *
+from pygame.locals import *
 from Sphere import *
 
 
@@ -6,29 +8,18 @@ def main():
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    # camera settings
+    glLoadIdentity()
     gluPerspective(30, (display[0]/display[1]), 1, 50.0)
-    glTranslatef(0.0, 0.0, -30.0)
 
-    # planet1
-    p1pos = (0.0, 0.0, 0.0)
-    p1 = Sphere(1.0, 40, 40, p1pos)
-    p1.position()
-
-    # planet2
-    p2pos = (3.0, 2.0, 0.0)
-    p2 = Sphere(2.0, 25, 25, p2pos)
-
-    #planet3
-    p3pos = (1.0, 2.0, 0.0)
-    p3 = Sphere(0.5, 25, 25, p3pos)
-
-
+    glTranslatef(0.0, 2.0, -30.0)
+    glRotatef(35.0, 1.0, 0.0, 0.0)
 
     # sun
-    #sunpos = (0.0, 0.0, 0.0)
-    #sun = Sphere(1.0, 25, 25, sunpos)
-    #sun.position()
+    sun = Sphere(2.0, 40, 40)
+    # planet1
+    p1 = Sphere(0.7, 25, 25)
+    # planet2
+    p2 = Sphere(0.7, 25, 25)
 
     while True:
         for event in pygame.event.get():
@@ -37,12 +28,6 @@ def main():
                     p1.rotate += 1
                 if event.key == pygame.K_DOWN:
                     p1.rotate -= 1
-                if event.key == pygame.K_LEFT:
-                    # glTranslatef(1.0, 1.0, 1.0)
-                    pass
-                if event.key == pygame.K_RIGHT:
-                    # glTranslatef(1.0, 1.0, -1.0)
-                    pass
 
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -50,26 +35,28 @@ def main():
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+        glRotatef(1.0, 0.0, 1.0, 0.0)
 
+        # draw sun
+        glColor3f(1.0, 1.0, 0.0)
+        sun.draw_sphere2()
+        # sun.light2()
+
+        # draw planet 1
+        glPushMatrix()
+        glTranslatef(10.0, 0.0, 0.0)
+        # glRotatef(1.0, 0.0, 1.0, 0.0)
+        glColor3f(0.0, 1.0, 0.0)
         p1.draw_sphere()
-        p1.light()
-        glRotatef(p1.rotate, 1, 1, 0)
+        glPopMatrix()
 
-
+        # draw planet 2
         glPushMatrix()
-        glTranslatef(3,0,0)
+        glTranslatef(-10.0, 0.0, 0.0)
+        # glRotatef(3.0, 0.0, 1.0, 0.0)
+        glColor3f(0.0, 0.0, 1.0)
         p2.draw_sphere()
-        p2.light()
         glPopMatrix()
-
-        glPushMatrix()
-        glRotatef(p3.rotate, 1, 1, 1)
-        glTranslatef(-3,0,0)
-        p3.draw_sphere()
-        p3.light()
-        glPopMatrix()
-        #sun.draw_sphere()
-        #sun.light()
 
         # repaint
         pygame.display.flip()

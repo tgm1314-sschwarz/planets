@@ -1,5 +1,3 @@
-import pygame
-from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
@@ -8,11 +6,10 @@ from math import *
 
 class Sphere(object):
 
-    def __init__(self, r, lats, longs, pos):
+    def __init__(self, r, lats, longs):
         self.r = r
         self.lats = lats
         self.longs = longs
-        self.pos = pos
         self.rotate = 1
         self.perspective = 50
 
@@ -23,11 +20,10 @@ class Sphere(object):
             zr0 = cos(lat0)
 
             lat1 = pi * (-0.5 + float(float(i) / float(self.lats)))
-            z1 = sin(lat1) *self.r
+            z1 = sin(lat1) * self.r
             zr1 = cos(lat1)
 
-
-            glBegin(GL_QUAD_STRIP)
+            glBegin(GL_LINE_LOOP)
 
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
@@ -41,6 +37,16 @@ class Sphere(object):
 
             glEnd()
 
+    def draw_sphere2(self):
+        glBegin(GL_LINE_LOOP)
+
+        sphere = gluNewQuadric()
+        # gluQuadricDrawStyle(sphere, GLU_FILL)
+        gluSphere(sphere, self.r, self.lats, self.longs)
+        # gluDeleteQuadric(sphere)
+
+        print(glGetError())
+        glEnd()
 
     def light(self):
         sun1 = (0.0, 2.0, -1.0, 1.0)
@@ -57,5 +63,26 @@ class Sphere(object):
         glEnable(GL_COLOR_MATERIAL)
         glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE)
 
-    def position(self):
-        glTranslatef(self.pos[0], self.pos[1], self.pos[2])
+    def light2(self):
+        zeros = (0.15, 0.15, 0.15, 0.3)
+        ones = (1.0, 1.0, 1.0, 0.3)
+        half = (0.5, 0.5, 0.5, 0.5)
+
+        glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zeros)
+        glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, half)
+        glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 15)
+        glLightfv(GL_LIGHT0, GL_AMBIENT, zeros)
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, ones)
+        glLightfv(GL_LIGHT0, GL_SPECULAR, half)
+        glEnable(GL_LIGHT0)
+        glEnable(GL_LIGHTING)
+        glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE)
+
+        glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
+        glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
+        glEnable(GL_TEXTURE_GEN_S)
+        glEnable(GL_TEXTURE_GEN_T)
+
+        glEnable(GL_COLOR_MATERIAL)
+        glEnable(GL_NORMALIZE)
+        glShadeModel(GL_SMOOTH)
