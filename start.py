@@ -20,7 +20,6 @@ def main():
     p2pos = (3.0, 0.0, 0.0)
     p2 = Sphere(2.0, 25, 25, p2pos)
 
-
     # sun
     #sunpos = (0.0, 0.0, 0.0)
     #sun = Sphere(1.0, 25, 25, sunpos)
