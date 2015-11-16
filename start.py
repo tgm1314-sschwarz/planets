@@ -16,17 +16,13 @@ def main():
     p1.position()
 
     # planet2
-<<<<<<< HEAD
     p2pos = (3.0, 2.0, 0.0)
-=======
-    glTranslatef(1, 0, 0)
-    p2pos = (3.0, 0.0, 0.0)
->>>>>>> origin/master
     p2 = Sphere(2.0, 25, 25, p2pos)
 
     #planet3
     p3pos = (1.0, 2.0, 0.0)
     p3 = Sphere(0.5, 25, 25, p3pos)
+
 
 
     # sun
