@@ -1,12 +1,5 @@
-
-
-import pygame
-from pygame.locals import *
-from OpenGL.GL import *
-from OpenGL.GLU import *
-from OpenGL.GLUT import *
-from math import *
 from Sphere import *
+
 
 def main():
     pygame.init()
@@ -23,7 +16,12 @@ def main():
     p1.position()
 
     # planet2
+<<<<<<< HEAD
     p2pos = (3.0, 2.0, 0.0)
+=======
+    glTranslatef(1, 0, 0)
+    p2pos = (3.0, 0.0, 0.0)
+>>>>>>> origin/master
     p2 = Sphere(2.0, 25, 25, p2pos)
 
     #planet3

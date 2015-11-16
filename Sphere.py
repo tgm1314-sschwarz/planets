@@ -27,7 +27,7 @@ class Sphere(object):
             zr1 = cos(lat1)
 
 
-            glBegin(GL_LINE_STRIP)
+            glBegin(GL_QUAD_STRIP)
 
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
@@ -41,8 +41,6 @@ class Sphere(object):
 
             glEnd()
 
-    def draw_sphere2(self):
-        pass
 
     def light(self):
         sun1 = (0.0, 2.0, -1.0, 1.0)
