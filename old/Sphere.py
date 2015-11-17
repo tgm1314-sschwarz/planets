@@ -10,6 +10,7 @@ class Sphere(object):
         self.r = r
         self.lats = lats
         self.longs = longs
+        self.rotate = 1
 
     def draw_sphere(self):
         for i in range(self.lats + 1):
@@ -21,7 +22,7 @@ class Sphere(object):
             z1 = sin(lat1) * self.r
             zr1 = cos(lat1)
 
-            glBegin(GL_QUAD_STRIP)
+            glBegin(GL_LINE_STRIP)
 
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))
@@ -34,3 +35,18 @@ class Sphere(object):
                 glVertex3f(x * zr1, y * zr1, z1)
 
             glEnd()
+
+    def light(self):
+        sun1 = (0.0, 2.0, -1.0, 1.0)
+        sun2 = (0.7, 0.7, 0.7, 1.0)
+        intense = (0.3, 0.3, 0.3, 1.0)
+
+        glEnable(GL_LIGHTING)
+        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, intense)
+
+        glEnable(GL_LIGHT0)
+        glLightfv(GL_LIGHT0, GL_POSITION, sun1)
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, sun2)
+
+        glEnable(GL_COLOR_MATERIAL)
+        glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE)

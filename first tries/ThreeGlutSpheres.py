@@ -31,7 +31,7 @@ def animate():
 
     # Draw the sun	-- as a yellow, wireframe sphere
     glColor3f(1.0, 1.0, 0.0)
-    glutWireSphere(1.0, 15, 15)
+    glutSolidSphere(1.0, 15, 15)
 
     # Draw the Earth
     # First position it around the sun
