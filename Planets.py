@@ -3,6 +3,7 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from Sphere import *
+from PIL import Image
 
 __author__ = 'Gala & Schwarz'
 
@@ -26,6 +27,8 @@ class Planets:
         self.moon = Sphere(.25, 30, 30)
         self.mars = Sphere(1.25, 30, 30)
 
+        self.SunImage = self.SunImage("piccs/sunmap.jpg")
+
         self.animation()
 
     def stopped(self):
@@ -37,6 +40,7 @@ class Planets:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+
 
     def animation(self):
         while True:
@@ -74,6 +78,7 @@ class Planets:
 
             # Sun
             glPushMatrix()
+            self.setupTexture(self.SunImage)
             glDisable(GL_LIGHTING)
             glColor3f(1.0, 1.0, 0.0)
             self.sun.draw_sphere()          # glutSolidSphere(2.0, 30, 30)
