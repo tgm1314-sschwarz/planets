@@ -12,7 +12,9 @@ class Planets:
     def __init__(self):
         # control variables
         self.rspeed = 1
+        self.earthrspeed = 0
         self.moonrspeed = 0
+        self.marsrspeed = 0
         self.light = True
         self.textures = False
         self.stop = False
@@ -37,7 +39,6 @@ class Planets:
 
     def animation(self):
         while True:
-            self.moonrspeed += 1 * self.rspeed
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
@@ -54,7 +55,10 @@ class Planets:
 
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-            glRotatef(self.rspeed, .0, 1.0, .0)
+            self.moonrspeed += 5 * self.rspeed
+            self.marsrspeed += 1 * self.rspeed
+            self.earthrspeed += 2 * self.rspeed
+            #glRotatef(self.rspeed, .0, 1.0, .0)
 
             # Sun
             glColor3f(1.0, 1.0, 0.0)
@@ -62,11 +66,12 @@ class Planets:
 
             # Earth
             glPushMatrix()
+            glRotatef(self.earthrspeed, .0, 1.0, .0)
             glTranslatef(15.0, .0, .0)
             glColor3f(.0, 1.0, .0)
             self.earth.draw_sphere()        # glutSolidSphere(1.0, 30, 30)
             # Moon
-            glRotatef(self.moonrspeed,0,1,0)
+            glRotatef(self.moonrspeed, 0, 1, 0)
             glTranslatef(2.0, .0, .0)
             glColor3f(.5, .5, .5)
             self.moon.draw_sphere()
@@ -74,8 +79,8 @@ class Planets:
 
             # Mars
             glPushMatrix()
-
-            glTranslatef(-15.0, .0, .0)
+            glRotatef(self.marsrspeed, .0, 1.0, .0)
+            glTranslatef(-22.0, .0, .0)
             glColor3f(1.0, 0.34, 0.04)
             self.mars.draw_sphere()         # glutSolidSphere(1.0, 30, 30)
             glPopMatrix()

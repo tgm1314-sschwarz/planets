@@ -17,7 +17,7 @@ def main():
 
     glMatrixMode(GL_PROJECTION)
 
-    gluPerspective(50, (display[0]/display[1]), 1, 50.0)
+    gluPerspective(75, (display[0]/display[1]), 1, 50.0)
     glTranslatef(.0, 4.0, -30.0)
     glRotatef(45.0, 1.0, .0, .0)
 
