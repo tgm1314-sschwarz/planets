@@ -5,6 +5,9 @@ __author__ = 'Gala & Schwarz'
 
 
 def main():
+    # window Position
+    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (200, 100)
+
     pygame.init()
 
     display = (1600, 900)
@@ -28,6 +31,7 @@ def main():
 
     glutInit()
 
+    # draw the planets
     Planets()
 
 

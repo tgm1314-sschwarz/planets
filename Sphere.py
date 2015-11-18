@@ -6,7 +6,7 @@ from math import *
 __author__ = 'Gala & Schwarz'
 
 
-class Sphere(object):
+class Sphere:
 
     def __init__(self, r, lats, longs):
         self.r = r

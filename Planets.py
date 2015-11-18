@@ -2,8 +2,9 @@ import pygame
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from Sphere import *
 from PIL import Image
+from Sphere import *
+
 
 __author__ = 'Gala & Schwarz'
 
@@ -13,10 +14,6 @@ class Planets:
     def __init__(self):
         # control variables
         self.rspeed = 1
-        self.earthrspeed = 0
-        self.moonrspeed = 0
-        self.marsrspeed = 0
-
         self.light = True
         self.textures = False
         self.stop = False
@@ -26,8 +23,15 @@ class Planets:
         self.earth = Sphere(1.25, 30, 30)
         self.moon = Sphere(.25, 30, 30)
         self.mars = Sphere(1.25, 30, 30)
+        self.venus = Sphere(1.5, 30, 30)
 
-        self.SunImage = self.SunImage("piccs/sunmap.jpg")
+        # speed of the different planets
+        self.earthrspeed = 0
+        self.moonrspeed = 0
+        self.marsrspeed = 0
+        self.venusrspeed = 0
+
+        self.sunTexture = Image.open("pics/bg.png")
 
         self.animation()
 
@@ -41,9 +45,9 @@ class Planets:
                     pygame.quit()
                     quit()
 
-
     def animation(self):
         while True:
+
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
@@ -70,21 +74,24 @@ class Planets:
 
             self.stopped()
 
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
+            # increasing the speed
+            self.earthrspeed += 2 * self.rspeed
             self.moonrspeed += 5 * self.rspeed
             self.marsrspeed += 1 * self.rspeed
-            self.earthrspeed += 2 * self.rspeed
+            self.venusrspeed += 3 * self.rspeed
+
+            # clearing the window
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
             # Sun
             glPushMatrix()
-            self.setupTexture(self.SunImage)
-            glDisable(GL_LIGHTING)
+            glDisable(GL_LIGHTING)          # disable light for the sun
             glColor3f(1.0, 1.0, 0.0)
             self.sun.draw_sphere()          # glutSolidSphere(2.0, 30, 30)
-            glEnable(GL_LIGHTING)
+            glEnable(GL_LIGHTING)           # enable light for other planets
             glPopMatrix()
 
+            # setting up light if L got pressed
             if self.light:
                 glDisable(GL_LIGHTING)
             else:
@@ -106,12 +113,21 @@ class Planets:
             # Mars
             glPushMatrix()
             glRotatef(self.marsrspeed, .0, 1.0, .0)
-            glTranslatef(-22.0, .0, .0)
-            glColor3f(1.0, 0.34, 0.04)
+            glTranslatef(-20.0, .0, .0)
+            glColor3f(1.0, .34, .04)
             self.mars.draw_sphere()         # glutSolidSphere(1.0, 30, 30)
+            glPopMatrix()
+
+            # Venus
+            glPushMatrix()
+            glRotatef(self.venusrspeed, .0, 1.0, .0)
+            glTranslatef(-10.0, .0, .0)
+            glColor3f(.0, .0, 1.0)
+            self.venus.draw_sphere()
             glPopMatrix()
 
             # Redrawing everything
             pygame.display.flip()
+
             # Delay
             pygame.time.wait(10)
