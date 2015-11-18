@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from planets.Sphere import *
+from Sphere import *
 
 __author__ = 'Gala & Schwarz'
 
