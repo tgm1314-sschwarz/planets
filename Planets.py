@@ -12,6 +12,7 @@ class Planets:
     def __init__(self):
         # control variables
         self.rspeed = 1
+        self.moonrspeed = 0
         self.light = True
         self.textures = False
         self.stop = False
@@ -36,6 +37,7 @@ class Planets:
 
     def animation(self):
         while True:
+            self.moonrspeed += 1 * self.rspeed
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
@@ -64,6 +66,7 @@ class Planets:
             glColor3f(.0, 1.0, .0)
             self.earth.draw_sphere()        # glutSolidSphere(1.0, 30, 30)
             # Moon
+            glRotatef(self.moonrspeed,0,1,0)
             glTranslatef(2.0, .0, .0)
             glColor3f(.5, .5, .5)
             self.moon.draw_sphere()
@@ -71,6 +74,7 @@ class Planets:
 
             # Mars
             glPushMatrix()
+
             glTranslatef(-15.0, .0, .0)
             glColor3f(1.0, 0.34, 0.04)
             self.mars.draw_sphere()         # glutSolidSphere(1.0, 30, 30)
@@ -78,5 +82,5 @@ class Planets:
 
             # Redrawing everything
             pygame.display.flip()
-            # Frame Rate
+            # Delay
             pygame.time.wait(10)

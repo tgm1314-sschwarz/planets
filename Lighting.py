@@ -10,6 +10,7 @@ class Lighting:
         ones = (1.0, 1.0, 1.0, 0.3)
         half = (0.5, 0.5, 0.5, 0.5)
 
+
         glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zeros)
         glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, half)
         glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 15)
