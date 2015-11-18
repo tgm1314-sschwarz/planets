@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from Sphere import *
+from planets.Sphere import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -15,6 +15,7 @@ class Planets:
         self.earthrspeed = 0
         self.moonrspeed = 0
         self.marsrspeed = 0
+
         self.light = True
         self.textures = False
         self.stop = False
@@ -47,6 +48,18 @@ class Planets:
                         self.rspeed -= 1
                     if event.key == pygame.K_p:
                         self.stop = not self.stop
+                    if event.key == pygame.K_l:
+                        self.light = not self.light
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        quit()
+
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if event.button == 4:
+                        self.rspeed += 1
+                    if event.button == 5:
+                        self.rspeed -= 1
+
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
@@ -58,11 +71,19 @@ class Planets:
             self.moonrspeed += 5 * self.rspeed
             self.marsrspeed += 1 * self.rspeed
             self.earthrspeed += 2 * self.rspeed
-            #glRotatef(self.rspeed, .0, 1.0, .0)
 
             # Sun
+            glPushMatrix()
+            glDisable(GL_LIGHTING)
             glColor3f(1.0, 1.0, 0.0)
             self.sun.draw_sphere()          # glutSolidSphere(2.0, 30, 30)
+            glEnable(GL_LIGHTING)
+            glPopMatrix()
+
+            if self.light:
+                glDisable(GL_LIGHTING)
+            else:
+                glEnable(GL_LIGHTING)
 
             # Earth
             glPushMatrix()

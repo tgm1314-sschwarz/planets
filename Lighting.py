@@ -9,11 +9,12 @@ class Lighting:
         zeros = (0.15, 0.15, 0.15, 0.3)
         ones = (1.0, 1.0, 1.0, 0.3)
         half = (0.5, 0.5, 0.5, 0.5)
-
+        lightposition = (1,1,1,1)
 
         glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zeros)
         glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, half)
         glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 15)
+        glLightfv(GL_LIGHT0, GL_POSITION, lightposition)
         glLightfv(GL_LIGHT0, GL_AMBIENT, zeros)
         glLightfv(GL_LIGHT0, GL_DIFFUSE, ones)
         glLightfv(GL_LIGHT0, GL_SPECULAR, half)
