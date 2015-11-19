@@ -1,4 +1,10 @@
 from OpenGL.GL import *
+<<<<<<< HEAD
+=======
+from OpenGL.GLU import *
+from OpenGL.GLUT import *
+from Images import *
+>>>>>>> origin/master
 from math import *
 
 __author__ = 'Gala & Schwarz'
@@ -6,10 +12,11 @@ __author__ = 'Gala & Schwarz'
 
 class Sphere:
 
-    def __init__(self, r, lats, longs):
+    def __init__(self, r, lats, longs, file):
         self.r = r
         self.lats = lats
         self.longs = longs
+        Images(file)
 
     def draw_sphere(self):
         for i in range(self.lats + 1):
