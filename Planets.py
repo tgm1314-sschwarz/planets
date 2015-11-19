@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from PIL import Image
 from Sphere import *
 
 
@@ -19,19 +18,17 @@ class Planets:
         self.stop = False
 
         # sphere objects
-        self.sun = Sphere(3, 30, 30)
-        self.earth = Sphere(1.25, 30, 30)
-        self.moon = Sphere(.25, 30, 30)
-        self.mars = Sphere(1.25, 30, 30)
-        self.venus = Sphere(1.5, 30, 30)
+        self.sun = Sphere(3, 30, 30, 'pics/earthmap.bmp')
+        self.earth = Sphere(1.25, 30, 30, 'pics/earthmap.bmp')
+        self.moon = Sphere(.25, 30, 30, 'pics/earthmap.bmp')
+        self.mars = Sphere(1.25, 30, 30, 'pics/earthmap.bmp')
+        self.venus = Sphere(1.5, 30, 30, 'pics/earthmap.bmp')
 
         # speed of the different planets
         self.earthrspeed = 0
         self.moonrspeed = 0
         self.marsrspeed = 0
         self.venusrspeed = 0
-
-        self.sunTexture = Image.open("pics/bg.png")
 
         self.animation()
 
