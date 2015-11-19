@@ -1,3 +1,6 @@
+from OpenGL.GLU import *
+from OpenGL.GLUT import *
+from pygame.locals import *
 from Lighting import *
 from Planets import *
 

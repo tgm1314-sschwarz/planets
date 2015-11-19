@@ -22,7 +22,7 @@ class Sphere(object):
             z1 = sin(lat1) * self.r
             zr1 = cos(lat1)
 
-            glBegin(GL_LINE_STRIP)
+            glBegin(GL_QUAD_STRIP)
 
             for j in range(self.longs + 1):
                 lng = 2 * pi * float(float(j - 1) / float(self.longs))

@@ -1,6 +1,4 @@
 from OpenGL.GL import *
-from OpenGL.GLU import *
-from OpenGL.GLUT import *
 from math import *
 
 __author__ = 'Gala & Schwarz'
