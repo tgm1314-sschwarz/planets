@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-import pygame
-from pygame.locals import *
-from OpenGL.GL import *
-from OpenGL.GLUT import *
->>>>>>> origin/master
 from Sphere import *
 from Images import *
 from Controller import *
@@ -19,21 +12,12 @@ class Planets:
         self.c = Controller()
 
         # sphere objects
-        self.sun = Sphere(3, 30, 30, 'pics/earthmap.bmp')
-        self.earth = Sphere(1.25, 30, 30, 'pics/earthmap.bmp')
-        self.moon = Sphere(.25, 30, 30, 'pics/earthmap.bmp')
-        self.mars = Sphere(1.25, 30, 30, 'pics/earthmap.bmp')
-        self.venus = Sphere(1.5, 30, 30, 'pics/earthmap.bmp')
+        self.sun = Sphere(3, 30, 30)
+        self.earth = Sphere(1.25, 30, 30)
+        self.moon = Sphere(.25, 30, 30)
+        self.mars = Sphere(1.25, 30, 30)
+        self.venus = Sphere(1.5, 30, 30)
 
-<<<<<<< HEAD
-=======
-        # speed of the different planets
-        self.earthrspeed = 0
-        self.moonrspeed = 0
-        self.marsrspeed = 0
-        self.venusrspeed = 0
-
->>>>>>> origin/master
         self.animation()
 
     def animation(self):
