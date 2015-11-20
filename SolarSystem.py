@@ -1,8 +1,8 @@
-from OpenGL.GLU import *
 from pygame.locals import *
 from Lighting import *
 from Planets import *
 from Controller import *
+from OpenGL.GLUT import *
 
 __author__ = 'Gala & Schwarz'
 

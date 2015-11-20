@@ -1,7 +1,6 @@
 from Sphere import *
 from Images import *
 from Controller import *
-from OpenGL.GLUT import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -41,15 +40,10 @@ class Planets:
                 self.c.key_pressed(event)
             # testing if the game got paused
             self.c.stopped()
-
             # increasing the speed
-            self.c.earth_r_speed += 1 * self.c.r_speed
-            self.c.moon_r_speed += 3 * self.c.r_speed
-            self.c.mars_r_speed += 0.5 * self.c.r_speed
-            self.c.saturn_r_speed += 0.2 * self.c.r_speed
-            self.c.saturn_ring_r_speed = -self.c.r_speed
+            self.c.increase()
 
-            # clearing the window
+            # clearing the window and starting to draw
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
             # Sun
