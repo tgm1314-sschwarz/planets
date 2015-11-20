@@ -19,6 +19,7 @@ class Planets:
         self.mars = Sphere(1.25, 30, 30)
         self.venus = Sphere(1.5, 30, 30)
 
+        # starting to animate
         self.animation()
 
     def animation(self):
@@ -73,7 +74,7 @@ class Planets:
             # Mars
             glPushMatrix()
             glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
-            glTranslatef(-20.0, .0, .0)
+            glTranslatef(-10.0, .0, .0)
             glColor3f(1.0, .34, .04)
             self.mars.draw_sphere()
             glPopMatrix()
@@ -81,11 +82,13 @@ class Planets:
             # Venus
             glPushMatrix()
             glRotatef(self.c.venus_r_speed, .0, 1.0, .0)
-            glTranslatef(-10.0, .0, .0)
+            glTranslatef(-20.0, .0, .0)
             glColor3f(.0, .0, 1.0)
             self.venus.draw_sphere()
             glRotatef(90, 1.0, .0, .0)
-            glutSolidTorus(0.1, 2.5, 30, 30)
+            glRotatef(45, .0, 1.0, .0)
+            for i in range(10):
+                glutWireTorus(0.1, 2+(i*0.1), 30, 30)
             glPopMatrix()
 
             # Redrawing everything

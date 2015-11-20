@@ -51,13 +51,4 @@ class Controller:
     def stopped(self):
         while self.stop:
             for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_p:
-                        self.stop = not self.stop
-                if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    quit()
-
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
+                self.key_pressed(event)
