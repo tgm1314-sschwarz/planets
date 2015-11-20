@@ -17,7 +17,7 @@ class Planets:
         self.earth = Sphere(1.25, 30, 30)
         self.moon = Sphere(.25, 30, 30)
         self.mars = Sphere(1.25, 30, 30)
-        self.venus = Sphere(1.5, 30, 30)
+        self.saturn = Sphere(1.5, 30, 30)
 
         # starting to animate
         self.animation()
@@ -34,7 +34,7 @@ class Planets:
             self.c.earth_r_speed += 2 * self.c.r_speed
             self.c.moon_r_speed += 5 * self.c.r_speed
             self.c.mars_r_speed += 1 * self.c.r_speed
-            self.c.venus_r_speed += 3 * self.c.r_speed
+            self.c.saturn_r_speed += 3 * self.c.r_speed
 
             # clearing the window
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -79,12 +79,13 @@ class Planets:
             self.mars.draw_sphere()
             glPopMatrix()
 
-            # Venus
+            # Saturn
             glPushMatrix()
-            glRotatef(self.c.venus_r_speed, .0, 1.0, .0)
+            glRotatef(self.c.saturn_r_speed, .0, 1.0, .0)
             glTranslatef(-20.0, .0, .0)
             glColor3f(.0, .0, 1.0)
-            self.venus.draw_sphere()
+            self.saturn.draw_sphere()
+
             glRotatef(90, 1.0, .0, .0)
             glRotatef(45, .0, 1.0, .0)
             for i in range(10):

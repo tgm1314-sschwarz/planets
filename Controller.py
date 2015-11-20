@@ -16,7 +16,7 @@ class Controller:
         self.earth_r_speed = 0
         self.moon_r_speed = 0
         self.mars_r_speed = 0
-        self.venus_r_speed = 0
+        self.saturn_r_speed = 0
 
     def key_pressed(self, event):
         if event.type == pygame.KEYDOWN:
