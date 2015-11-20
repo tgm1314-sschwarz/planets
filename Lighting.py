@@ -9,6 +9,7 @@ class Lighting:
         zeros = (0.15, 0.15, 0.15, 0.3)
         ones = (1.0, 1.0, 1.0, 0.3)
         half = (0.5, 0.5, 0.5, 0.5)
+        # reposition it into the sun
         light_position = (1.0, 1.0, 1.0, 1.0)
 
         glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zeros)

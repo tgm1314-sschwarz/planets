@@ -1,6 +1,7 @@
 from Sphere import *
 from Images import *
 from Controller import *
+from OpenGL.GLUT import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -45,11 +46,16 @@ class Planets:
             glEnable(GL_LIGHTING)           # enable light for other planets
             glPopMatrix()
 
-            # setting up light if L got pressed
+            # disable light if L got pressed
             if self.c.light:
                 glDisable(GL_LIGHTING)
             else:
                 glEnable(GL_LIGHTING)
+
+            if self.c.textures:
+                Images("pics/earthmap.jpg")
+            else:
+                glDisable(GL_TEXTURE_2D)
 
             # Earth
             glPushMatrix()
@@ -69,7 +75,7 @@ class Planets:
             glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
             glTranslatef(-20.0, .0, .0)
             glColor3f(1.0, .34, .04)
-            self.mars.draw_sphere()         # glutSolidSphere(1.0, 30, 30)
+            self.mars.draw_sphere()
             glPopMatrix()
 
             # Venus
@@ -78,6 +84,8 @@ class Planets:
             glTranslatef(-10.0, .0, .0)
             glColor3f(.0, .0, 1.0)
             self.venus.draw_sphere()
+            glRotatef(90, 1.0, .0, .0)
+            glutSolidTorus(0.1, 2.5, 30, 30)
             glPopMatrix()
 
             # Redrawing everything

@@ -1,5 +1,4 @@
 from OpenGL.GLU import *
-from OpenGL.GLUT import *
 from pygame.locals import *
 from Lighting import *
 from Planets import *
@@ -29,10 +28,10 @@ def main():
 
     glMatrixMode(GL_MODELVIEW)
 
+    glutInit()
+
     # set up the light
     Lighting()
-
-    glutInit()
 
     # draw the planets
     Planets()

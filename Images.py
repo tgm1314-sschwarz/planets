@@ -6,9 +6,7 @@ class Images:
 
     def __init__(self, file):
         self.file = file
-        self.imgID = 0
-
-        self.image()
+        self.imgID = self.image()
         self.setup()
 
     def image(self):
@@ -20,12 +18,14 @@ class Images:
         except SystemError:
             ix, iy, image = img.size[0], img.size[1], img.tobytes("raw", "RGBX", 0, -1)
 
-        self.imgID = glGenTextures(1)
+        imgID = glGenTextures(1)
 
-        glBindTexture(GL_TEXTURE_2D, self.imgID)
+        glBindTexture(GL_TEXTURE_2D, imgID)
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1)
 
         glTexImage2D(GL_TEXTURE_2D, 0, 3, ix, iy, 0, GL_RGBA, GL_UNSIGNED_BYTE, image)
+
+        return imgID
 
     def setup(self):
         glEnable(GL_TEXTURE_2D)

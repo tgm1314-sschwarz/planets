@@ -27,8 +27,12 @@ class Controller:
 
             if event.key == pygame.K_p:
                 self.stop = not self.stop
+
             if event.key == pygame.K_l:
                 self.light = not self.light
+
+            if event.key == pygame.K_t:
+                self.textures = not self.textures
 
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
@@ -50,6 +54,10 @@ class Controller:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_p:
                         self.stop = not self.stop
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    quit()
+
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()

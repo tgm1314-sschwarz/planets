@@ -1,4 +1,4 @@
-from Images import *
+from OpenGL.GL import *
 from math import *
 
 __author__ = 'Gala & Schwarz'
@@ -30,6 +30,7 @@ class Sphere:
 
                 glNormal3f(x * zr0, y * zr0, z0)
                 glVertex3f(x * zr0, y * zr0, z0)
+
                 glNormal3f(x * zr1, y * zr1, z1)
                 glVertex3f(x * zr1, y * zr1, z1)
 
