@@ -11,12 +11,14 @@ class Controller:
         self.light = True
         self.textures = False
         self.stop = False
+        self.zoom = 0
 
         # speed of the different planets
         self.earth_r_speed = 0
         self.moon_r_speed = 0
         self.mars_r_speed = 0
         self.saturn_r_speed = 0
+        self.saturn_ring_speed = -1
 
     def key_pressed(self, event):
         if event.type == pygame.KEYDOWN:

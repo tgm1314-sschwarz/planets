@@ -9,7 +9,7 @@ class Lighting:
         zeros = (0.15, 0.15, 0.15, 0.3)
         ones = (1.0, 1.0, 1.0, 0.3)
         half = (0.5, 0.5, 0.5, 0.5)
-        # reposition it into the sun
+        # reposition the light into the sun
         light_position = (1.0, 1.0, 1.0, 1.0)
 
         glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, zeros)
@@ -22,11 +22,6 @@ class Lighting:
         glEnable(GL_LIGHT0)
         glEnable(GL_LIGHTING)
         glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE)
-
-        glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
-        glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
-        glEnable(GL_TEXTURE_GEN_S)
-        glEnable(GL_TEXTURE_GEN_T)
 
         glEnable(GL_COLOR_MATERIAL)
         glEnable(GL_NORMALIZE)

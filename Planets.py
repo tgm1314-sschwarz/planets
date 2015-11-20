@@ -11,86 +11,108 @@ class Planets:
     def __init__(self):
         # Controller Object
         self.c = Controller()
+        self.i = Images()
 
-        # sphere objects
-        self.sun = Sphere(3, 30, 30)
-        self.earth = Sphere(1.25, 30, 30)
-        self.moon = Sphere(.25, 30, 30)
-        self.mars = Sphere(1.25, 30, 30)
-        self.saturn = Sphere(1.5, 30, 30)
+        # quadrick
+        q = gluNewQuadric()
+
+        # spheres
+        self.sun = Sphere(5, 30, 30, q)
+        self.earth = Sphere(1.25, 30, 30, q)
+        self.moon = Sphere(.25, 30, 30, q)
+        self.mars = Sphere(1.25, 30, 30, q)
+        self.saturn = Sphere(1.5, 30, 30, q)
+
+        # textures
+        self.earth_tex = self.i.image("pics/earthmap.jpg")
+        self.sun_tex = self.i.image("pics/sunmap.jpg")
+        self.moon_tex = self.i.image("pics/moonmap.jpg")
+        self.mars_tex = self.i.image("pics/marsmap.jpg")
+        self.saturn_tex = self.i.image("pics/saturnmap.jpg")
+        # self.saturn_ring_tex = self.i.image("pics/saturnringmap.jpg")
 
         # starting to animate
         self.animation()
 
     def animation(self):
         while True:
+            # testing if a key got pressed
             for event in pygame.event.get():
                 self.c.key_pressed(event)
-
             # testing if the game got paused
             self.c.stopped()
 
             # increasing the speed
-            self.c.earth_r_speed += 2 * self.c.r_speed
-            self.c.moon_r_speed += 5 * self.c.r_speed
-            self.c.mars_r_speed += 1 * self.c.r_speed
-            self.c.saturn_r_speed += 3 * self.c.r_speed
+            self.c.earth_r_speed += 1 * self.c.r_speed
+            self.c.moon_r_speed += 3 * self.c.r_speed
+            self.c.mars_r_speed += 0.5 * self.c.r_speed
+            self.c.saturn_r_speed += 0.2 * self.c.r_speed
+            self.c.saturn_ring_r_speed = -self.c.r_speed
 
             # clearing the window
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
             # Sun
+            if self.c.textures: self.i.place_texture(self.sun_tex)
             glPushMatrix()
             glDisable(GL_LIGHTING)          # disable light for the sun
             glColor3f(1.0, 1.0, .0)
-            self.sun.draw_sphere()          # glutSolidSphere(2.0, 30, 30)
+            self.sun.draw_sphere2()          # glutSolidSphere(2.0, 30, 30)
             glEnable(GL_LIGHTING)           # enable light for other planets
             glPopMatrix()
 
-            # disable light if L got pressed
+            # disable light if "l" got pressed
             if self.c.light:
                 glDisable(GL_LIGHTING)
             else:
                 glEnable(GL_LIGHTING)
 
-            if self.c.textures:
-                Images("pics/earthmap.jpg")
-            else:
-                glDisable(GL_TEXTURE_2D)
-
-            # Earth
+            # Earth + Moon
+            if self.c.textures: self.i.place_texture(self.earth_tex)
             glPushMatrix()
-            glRotatef(self.c.earth_r_speed, .0, 1.0, .0)
+            # Earth
+            glRotatef(-90, 1.0, .0, .0)
+            glRotatef(self.c.earth_r_speed, .0, .0, 1.0)
             glTranslatef(15.0, .0, .0)
             glColor3f(.0, 1.0, .0)
-            self.earth.draw_sphere()
+            self.earth.draw_sphere2()
             # Moon
-            glRotatef(self.c.moon_r_speed, 0, 1, 0)
+            if self.c.textures: self.i.place_texture(self.moon_tex)
+            glRotatef(self.c.moon_r_speed, .0, .0, 1.0)
             glTranslatef(2.0, .0, .0)
             glColor3f(.5, .5, .5)
-            self.moon.draw_sphere()
+            self.moon.draw_sphere2()
             glPopMatrix()
 
             # Mars
+            if self.c.textures: self.i.place_texture(self.mars_tex)
             glPushMatrix()
-            glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
+            glRotatef(-90, 1.0, .0, .0)
+            glRotatef(self.c.mars_r_speed, .0, .0, 1.0)
             glTranslatef(-10.0, .0, .0)
             glColor3f(1.0, .34, .04)
-            self.mars.draw_sphere()
+            self.mars.draw_sphere2()
             glPopMatrix()
 
-            # Saturn
+            # Saturn + Ring
+            if self.c.textures: self.i.place_texture(self.saturn_tex)
             glPushMatrix()
-            glRotatef(self.c.saturn_r_speed, .0, 1.0, .0)
-            glTranslatef(-20.0, .0, .0)
+            # Saturn
+            glRotatef(-90, 1.0, .0, .0)
+            glRotatef(self.c.saturn_r_speed, .0, .0, 1.0)
+            glTranslatef(-22.0, .0, .0)
             glColor3f(.0, .0, 1.0)
             self.saturn.draw_sphere()
-
-            glRotatef(90, 1.0, .0, .0)
+            """
+            # Ring
             glRotatef(45, .0, 1.0, .0)
             for i in range(10):
                 glutWireTorus(0.1, 2+(i*0.1), 30, 30)
+            """
             glPopMatrix()
+
+            if not self.c.textures:
+                glDisable(GL_TEXTURE_2D)
 
             # Redrawing everything
             pygame.display.flip()

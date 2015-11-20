@@ -1,17 +1,15 @@
 from PIL.Image import open
 from OpenGL.GL import *
 
+__author__ = 'Gala & Schwarz'
+
 
 class Images:
 
-    def __init__(self, file):
-        self.file = file
-        self.imgID = self.image()
-        self.setup()
+    @staticmethod
+    def image(file):
 
-    def image(self):
-
-        img = open(self.file)
+        img = open(file)
 
         try:
             ix, iy, image = img.size[0], img.size[1], img.tobytes("raw", "RGBA", 0, -1)
@@ -27,10 +25,11 @@ class Images:
 
         return imgID
 
-    def setup(self):
+    @staticmethod
+    def place_texture(imgID):
         glEnable(GL_TEXTURE_2D)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
-        glBindTexture(GL_TEXTURE_2D, self.imgID)
+        glBindTexture(GL_TEXTURE_2D, imgID)

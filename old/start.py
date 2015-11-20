@@ -1,7 +1,9 @@
 import pygame
 from pygame.locals import *
-from old.Sphere import *
-from old.Images import *
+from OpenGL.GLU import *
+from OpenGL.GLUT import *
+from Sphere import *
+from Images import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -20,29 +22,41 @@ def main():
 
     gluPerspective(30, (display[0]/display[1]), 1, 50.0)
     glTranslatef(.0, 0.0, -5.0)
+    glRotatef(270, 1, 0, 0)
+
+    rotate = 1
 
     glMatrixMode(GL_MODELVIEW)
 
-    p1 = Sphere(1.0, 30, 30)
+    glutInit()
+
+    i = Images()
+    texture = i.image("../pics/earthmap.jpg")
+
+    q = gluNewQuadric()
+    p1 = Sphere(1.0, 30, 30, q)
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    p1.rotate += 1
+                    rotate += 1
                 if event.key == pygame.K_DOWN:
-                    p1.rotate -= 1
+                    rotate -= 1
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        glRotatef(p1.rotate, 1., 1., 1.)
+        glRotatef(rotate, .0, .0, 1.0)
 
-        # Images("../pics/earthmap.bmp")
-        p1.draw_sphere()
-        p1.light()
+        # glDisable(GL_LIGHTING)
+        i.place_texture(texture)
+        # glutSolidSphere(1.0, 30, 30)
+        # p1.draw_sphere()
+        p1.draw_sphere2()
+        # p1.light()
 
         # repaint
         pygame.display.flip()
