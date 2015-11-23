@@ -55,7 +55,7 @@ def main():
         i.place_texture(texture)
         # glutSolidSphere(1.0, 30, 30)
         # p1.draw_sphere()
-        p1.draw_sphere2()
+        p1.draw_sphere()
         # p1.light()
 
         # repaint

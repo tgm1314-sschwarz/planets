@@ -1,6 +1,7 @@
 from Sphere import *
 from Images import *
 from Controller import *
+from OpenGL.GLUT import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -50,13 +51,15 @@ class Planets:
             if self.c.textures: self.i.place_texture(self.sun_tex)
             glPushMatrix()
             glDisable(GL_LIGHTING)          # disable light for the sun
+            glRotatef(-90, 1.0, .0, .0)
             glColor3f(1.0, 1.0, .0)
-            self.sun.draw_sphere2()          # glutSolidSphere(2.0, 30, 30)
+            # glutSolidSphere(5.0, 30, 30)
+            self.sun.draw_sphere2()
             glEnable(GL_LIGHTING)           # enable light for other planets
             glPopMatrix()
 
             # disable light if "l" got pressed
-            if self.c.light:
+            if not self.c.light:
                 glDisable(GL_LIGHTING)
             else:
                 glEnable(GL_LIGHTING)
@@ -96,7 +99,7 @@ class Planets:
             glRotatef(self.c.saturn_r_speed, .0, .0, 1.0)
             glTranslatef(-22.0, .0, .0)
             glColor3f(.0, .0, 1.0)
-            self.saturn.draw_sphere()
+            self.saturn.draw_sphere2()
             """
             # Ring
             glRotatef(45, .0, 1.0, .0)
