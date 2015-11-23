@@ -3,7 +3,7 @@ from pygame.locals import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from Sphere import *
-from Images import *
+from LoadImage import *
 
 __author__ = 'Gala & Schwarz'
 

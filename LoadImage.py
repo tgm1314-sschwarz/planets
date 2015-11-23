@@ -4,10 +4,10 @@ from OpenGL.GL import *
 __author__ = 'Gala & Schwarz'
 
 
-class Images:
+class Image:
 
     @staticmethod
-    def image(file):
+    def load(file):
 
         img = open(file)
 
@@ -26,7 +26,7 @@ class Images:
         return imgID
 
     @staticmethod
-    def place_texture(imgID):
+    def place_image(imgID):
         glEnable(GL_TEXTURE_2D)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)

@@ -1,17 +1,59 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
-from math import *
+
+from Planet import Planet
+from RealPlanet import RealPlanet
+from Decorator.Translate import Translate
+from Decorator.Rotate import Rotate
+from Decorator.Color import Color
+from Decorator.HasMoon import HasMoon
 
 __author__ = 'Gala & Schwarz'
 
 
 class Sphere:
 
+    def __init__(self, planet_name):
+        self.p = Planet()
+        self.p_name = planet_name
+        self.q = gluNewQuadric()
+
+    def create_sphere(self):
+        if self.p_name == "sun":
+            glDisable(GL_LIGHTING)
+            self.p = Color(1.0, 1.0, .0)
+            self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = RealPlanet(self.q, 5, 30, 30)
+
+        elif self.p_name == "earth":
+            self.p = Translate(15.0, .0, .0)
+            self.p = Color(.0, 1.0, .0)
+            self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = RealPlanet(self.q, 1.25, 30, 30)
+
+            self.p = Translate(2.0, .0, .0)
+            self.p = Color(.5, .5, .5)
+            self.p = HasMoon(self.q, .25, 30, 30)
+
+        elif self.p_name == "mars":
+            self.p = Translate(-10.0, .0, .0)
+            self.p = Color(1.0, .34, .04)
+            self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = RealPlanet(self.q, 1.25, 30, 30)
+
+        elif self.p_name == "saturn":
+            self.p = Translate(-22.0, .0, .0)
+            self.p = Color(.0, .0, 1.0)
+            self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = RealPlanet(self.q, 1.5, 30, 30)
+
+    """
     def __init__(self, r, lats, longs, q):
         self.r = r
         self.lats = lats
         self.longs = longs
         self.q = q
+
 
     def draw_sphere(self):
         texY1 = 0
@@ -48,3 +90,4 @@ class Sphere:
     def draw_sphere2(self):
         gluQuadricTexture(self.q, 1)
         gluSphere(self.q, self.r, self.lats, self.longs)
+    """

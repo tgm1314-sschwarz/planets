@@ -1,6 +1,6 @@
 from pygame.locals import *
 from Lighting import *
-from Planets import *
+from Animate import *
 from Controller import *
 from OpenGL.GLUT import *
 
@@ -16,6 +16,7 @@ def main():
 
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
+    pygame.display.set_caption("Solarsysten, Gala & Schwarz")
 
     glShadeModel(GL_SMOOTH)
     glClearColor(.0, .0, .0, .0)
@@ -36,7 +37,7 @@ def main():
     Lighting()
 
     # draw the planets
-    Planets()
+    Animate()
 
 
 if __name__ == '__main__':
