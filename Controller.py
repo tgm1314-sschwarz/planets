@@ -31,6 +31,10 @@ class Controller:
         self.saturn_r_speed = 0
         self.saturn_ring_speed = -1*self.r_speed
 
+        # mouse coordinates
+        self.x = .0
+        self.y = .0
+
     def key_pressed(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP or event.key == pygame.K_w:
@@ -55,11 +59,19 @@ class Controller:
                 quit()
 
         if event.type == pygame.MOUSEBUTTONUP:
+            """
             if event.button == 1:
                 self.light = not self.light
 
             if event.button == 3:
                 self.textures = not self.textures
+            """
+            if event.button == 1:
+                if -780 <= self.x <= -580:
+                    if -430 <= self.y <= -370:
+                        self.light = not self.light
+                    elif -350 <= self.y <= -290:
+                        self.textures = not self.textures
 
             if event.button == 4:
                 self.r_speed += 1
@@ -100,6 +112,11 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.mars_texture)
             elif name == "saturn":
                 glBindTexture(GL_TEXTURE_2D, self.saturn_texture)
+
+    def get_mouse_pos(self):
+        self.x, self.y = pygame.mouse.get_pos()
+        self.x -= 800
+        self.y -= 450
 
     def increase(self):
         self.earth_r_speed += 0.5 * self.r_speed

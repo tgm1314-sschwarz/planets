@@ -1,4 +1,5 @@
 from Sphere import *
+from CreateButton import *
 from Controller import *
 
 __author__ = 'Gala & Schwarz'
@@ -17,11 +18,17 @@ class Animate:
         self.mars = Sphere("mars")
         self.saturn = Sphere("saturn")
 
+        self.b1 = CreateButton("b1")
+        self.b2 = CreateButton("b2")
+
         # starting to animate
         self.animation()
 
     def animation(self):
         while True:
+            # get the OpenGL coordinates of the mouse position
+            self.c.get_mouse_pos()
+
             # testing if a key got pressed
             for event in pygame.event.get():
                 self.c.key_pressed(event)
@@ -34,6 +41,9 @@ class Animate:
 
             # clearing the window and starting to draw
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+            self.b1.init()
+            self.b2.init()
 
             glPushMatrix()
             self.c.textures_on_off("sun")

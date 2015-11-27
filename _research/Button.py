@@ -35,12 +35,12 @@ def main():
         x, y = pygame.mouse.get_pos()
         x -= 800
         y -= 450
-        #print(x, y)
+        # print(x, y)
 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONUP:
-                if x>=-160 and x<=160 and y>=-160 and y<=160:
-                    print("oida")
+                if -160 <= x <= 160 and -160 <= y <= 160:
+                    print("pressed")
 
             if event.type == pygame.QUIT:
                 pygame.quit()
