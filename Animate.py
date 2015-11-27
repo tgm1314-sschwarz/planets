@@ -42,7 +42,10 @@ class Animate:
             # clearing the window and starting to draw
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+            # drawing the buttons
+            self.c.textures_on_off("b1")
             self.b1.init()
+            self.c.textures_on_off("b2")
             self.b2.init()
 
             glPushMatrix()

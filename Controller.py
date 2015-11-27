@@ -23,6 +23,8 @@ class Controller:
         self.moon_texture = self.i.load("pics/moonmap.jpg")
         self.mars_texture = self.i.load("pics/marsmap.jpg")
         self.saturn_texture = self.i.load("pics/saturnmap.jpg")
+        self.b1_texture = self.i.load("pics/b1.jpg")
+        self.b2_texture = self.i.load("pics/b2.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -112,6 +114,10 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.mars_texture)
             elif name == "saturn":
                 glBindTexture(GL_TEXTURE_2D, self.saturn_texture)
+            elif name == "b1":
+                glBindTexture(GL_TEXTURE_2D, self.b1_texture)
+            elif name == "b2":
+                glBindTexture(GL_TEXTURE_2D, self.b2_texture)
 
     def get_mouse_pos(self):
         self.x, self.y = pygame.mouse.get_pos()
