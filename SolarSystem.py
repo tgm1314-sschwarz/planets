@@ -12,8 +12,10 @@ def main():
     # window Position
     os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (200, 100)
 
+    # starting pygame
     pygame.init()
 
+    # making a pygame window
     display = (1600, 900)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
     pygame.display.set_caption("Solarsysten, Gala & Schwarz")
@@ -36,7 +38,7 @@ def main():
     # set up the light
     Lighting()
 
-    # draw the planets
+    # starting to animate
     Animate()
 
 

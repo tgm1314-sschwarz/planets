@@ -1,4 +1,4 @@
-from Decorator.PlanetDecorator import PlanetDecorator
+from decorator.PlanetDecorator import PlanetDecorator
 from OpenGL.GLU import *
 
 

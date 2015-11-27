@@ -20,6 +20,7 @@ class Controller:
 
         self.sun_texture = self.i.load("pics/sunmap.jpg")
         self.earth_texture = self.i.load("pics/earthmap.jpg")
+        self.moon_texture = self.i.load("pics/moonmap.jpg")
         self.mars_texture = self.i.load("pics/marsmap.jpg")
         self.saturn_texture = self.i.load("pics/saturnmap.jpg")
 
@@ -93,6 +94,8 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.sun_texture)
             elif name == "earth":
                 glBindTexture(GL_TEXTURE_2D, self.earth_texture)
+            elif name == "moon":
+                glBindTexture(GL_TEXTURE_2D, self.moon_texture)
             elif name == "mars":
                 glBindTexture(GL_TEXTURE_2D, self.mars_texture)
             elif name == "saturn":

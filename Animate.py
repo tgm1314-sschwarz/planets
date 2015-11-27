@@ -13,6 +13,7 @@ class Animate:
         # spheres
         self.sun = Sphere("sun")
         self.earth = Sphere("earth")
+        self.moon = Sphere("moon")
         self.mars = Sphere("mars")
         self.saturn = Sphere("saturn")
 
@@ -34,28 +35,32 @@ class Animate:
             # clearing the window and starting to draw
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-            self.c.textures_on_off("sun")
             glPushMatrix()
+            self.c.textures_on_off("sun")
             self.sun.create_sphere()
             glPopMatrix()
 
             # testing if light got turned on or off
             self.c.light_on_off()
 
-            self.c.textures_on_off("earth")
             glPushMatrix()
+            self.c.textures_on_off("earth")
             glRotatef(self.c.earth_r_speed, .0, 1.0, .0)
             self.earth.create_sphere()
+
+            self.c.textures_on_off("moon")
+            glRotatef(self.c.moon_r_speed, .0, .0, 1.0)
+            self.moon.create_sphere()
             glPopMatrix()
 
-            self.c.textures_on_off("mars")
             glPushMatrix()
+            self.c.textures_on_off("mars")
             glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
             self.mars.create_sphere()
             glPopMatrix()
 
-            self.c.textures_on_off("saturn")
             glPushMatrix()
+            self.c.textures_on_off("saturn")
             glRotatef(self.c.saturn_r_speed, .0, 1.0, .0)
             self.saturn.create_sphere()
             glPopMatrix()

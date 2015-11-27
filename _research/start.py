@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
-from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from Sphere import *
+
+from _research.Sphere import *
 from LoadImage import *
 
 __author__ = 'Gala & Schwarz'
@@ -30,8 +30,8 @@ def main():
 
     glutInit()
 
-    i = Images()
-    texture = i.image("../pics/earthmap.jpg")
+    i = Image()
+    texture = i.load("../pics/earthmap.jpg")
 
     q = gluNewQuadric()
     p1 = Sphere(1.0, 30, 30, q)
@@ -52,10 +52,10 @@ def main():
         glRotatef(rotate, .0, .0, 1.0)
 
         # glDisable(GL_LIGHTING)
-        i.place_texture(texture)
+        i.place_image(texture)
         # glutSolidSphere(1.0, 30, 30)
         # p1.draw_sphere()
-        p1.draw_sphere()
+        p1.draw_sphere2()
         # p1.light()
 
         # repaint

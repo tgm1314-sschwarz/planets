@@ -3,10 +3,10 @@ from OpenGL.GLU import *
 
 from Planet import Planet
 from RealPlanet import RealPlanet
-from Decorator.Translate import Translate
-from Decorator.Rotate import Rotate
-from Decorator.Color import Color
-from Decorator.HasMoon import HasMoon
+from decorator.Translate import Translate
+from decorator.Rotate import Rotate
+from decorator.Color import Color
+from decorator.HasMoon import HasMoon
 
 __author__ = 'Gala & Schwarz'
 
@@ -21,30 +21,31 @@ class Sphere:
     def create_sphere(self):
         if self.p_name == "sun":
             glDisable(GL_LIGHTING)
-            self.p = Color(1.0, 1.0, .0)
             self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = Color(1.0, 1.0, .0)
             self.p = RealPlanet(self.q, 5, 30, 30)
 
         elif self.p_name == "earth":
             self.p = Translate(15.0, .0, .0)
-            self.p = Color(.0, 1.0, .0)
             self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = Color(.0, 1.0, .0)
             self.p = RealPlanet(self.q, 1.25, 30, 30)
 
+        elif self.p_name == "moon":
             self.p = Translate(2.0, .0, .0)
             self.p = Color(.5, .5, .5)
-            self.p = HasMoon(self.q, .25, 30, 30)
+            self.p = RealPlanet(self.q, .25, 30, 30)
 
         elif self.p_name == "mars":
             self.p = Translate(-10.0, .0, .0)
-            self.p = Color(1.0, .34, .04)
             self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = Color(1.0, .34, .04)
             self.p = RealPlanet(self.q, 1.25, 30, 30)
 
         elif self.p_name == "saturn":
             self.p = Translate(-22.0, .0, .0)
-            self.p = Color(.0, .0, 1.0)
             self.p = Rotate(-90, 1.0, .0, .0)
+            self.p = Color(.0, .0, 1.0)
             self.p = RealPlanet(self.q, 1.5, 30, 30)
 
     """

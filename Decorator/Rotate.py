@@ -1,6 +1,6 @@
 from OpenGL.GL import *
 
-from Decorator.PlanetDecorator import PlanetDecorator
+from decorator.PlanetDecorator import PlanetDecorator
 
 
 class Rotate(PlanetDecorator):
