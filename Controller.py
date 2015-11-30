@@ -24,6 +24,7 @@ class Controller:
         self.saturn_tex = i.load("pics/saturnmap.jpg")
         self.b1_tex = i.load("pics/b1.jpg")
         self.b2_tex = i.load("pics/b2.jpg")
+        self.legend = i.load("pics/LEGEND.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
