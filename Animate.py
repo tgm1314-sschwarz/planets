@@ -11,13 +11,18 @@ class Animate:
         # Controller Object
         self.c = Controller()
 
-        # spheres
+        # planets
         self.sun = CreateObject("sun")
         self.earth = CreateObject("earth")
         self.moon = CreateObject("moon")
         self.mars = CreateObject("mars")
         self.saturn = CreateObject("saturn")
 
+        # buttons
+        """
+        self.b1 = CreateObject("b1")
+        self.b2 = CreateObject("b2")
+        """
         self.b1 = CreateButton("b1")
         self.b2 = CreateButton("b2")
 
@@ -43,10 +48,20 @@ class Animate:
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
             # drawing the buttons
+            glPushMatrix()
             self.c.textures_on_off("b1")
             self.b1.init()
             self.c.textures_on_off("b2")
             self.b2.init()
+            glPopMatrix()
+            """
+            glPushMatrix()
+            self.c.textures_on_off("b1")
+            self.b1.create()
+            self.c.textures_on_off("b2")
+            self.b2.create()
+            glPopMatrix()
+            """
 
             glPushMatrix()
             self.c.textures_on_off("sun")
@@ -79,70 +94,10 @@ class Animate:
             glPopMatrix()
 
             """
-            # Sun
-            if self.c.textures: self.i.place_texture(self.sun_tex)
-            glPushMatrix()
-            glDisable(GL_LIGHTING)          # disable light for the sun
-            glRotatef(-90, 1.0, .0, .0)
-            glColor3f(1.0, 1.0, .0)
-            # glutSolidSphere(5.0, 30, 30)
-            self.sun.draw_sphere2()
-            glEnable(GL_LIGHTING)           # enable light for other planets
-            glPopMatrix()
-
-            # disable light if "l" got pressed
-            if not self.c.light:
-                glDisable(GL_LIGHTING)
-            else:
-                glEnable(GL_LIGHTING)
-
-            # Earth + Moon
-            if self.c.textures: self.i.place_texture(self.earth_tex)
-            glPushMatrix()
-            # Earth
-            glRotatef(-90, 1.0, .0, .0)
-            glRotatef(self.c.earth_r_speed, .0, .0, 1.0)
-            glTranslatef(15.0, .0, .0)
-            glColor3f(.0, 1.0, .0)
-            self.earth.draw_sphere2()
-            # Moon
-            if self.c.textures: self.i.place_texture(self.moon_tex)
-            glRotatef(self.c.moon_r_speed, .0, .0, 1.0)
-            glTranslatef(2.0, .0, .0)
-            glColor3f(.5, .5, .5)
-            self.moon.draw_sphere2()
-            glPopMatrix()
-
-            # Mars
-            if self.c.textures: self.i.place_texture(self.mars_tex)
-            glPushMatrix()
-            glRotatef(-90, 1.0, .0, .0)
-            glRotatef(self.c.mars_r_speed, .0, .0, 1.0)
-            glTranslatef(-10.0, .0, .0)
-            glColor3f(1.0, .34, .04)
-            self.mars.draw_sphere2()
-            glPopMatrix()
-
-            # Saturn + Ring
-            if self.c.textures: self.i.place_texture(self.saturn_tex)
-            glPushMatrix()
-            # Saturn
-            glRotatef(-90, 1.0, .0, .0)
-            glRotatef(self.c.saturn_r_speed, .0, .0, 1.0)
-            glTranslatef(-22.0, .0, .0)
-            glColor3f(.0, .0, 1.0)
-            self.saturn.draw_sphere2()
-
             # Ring
-
             glRotatef(45, .0, 1.0, .0)
             for i in range(10):
                 glutWireTorus(0.1, 2+(i*0.1), 30, 30)
-
-            glPopMatrix()
-
-            if not self.c.textures:
-                glDisable(GL_TEXTURE_2D)
             """
             # Redrawing everything
             pygame.display.flip()

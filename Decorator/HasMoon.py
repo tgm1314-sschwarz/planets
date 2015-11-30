@@ -1,8 +1,8 @@
-from decorator.PlanetDecorator import PlanetDecorator
+from decorator.ObjectDecorator import ObjectDecorator
 from OpenGL.GLU import *
 
 
-class HasMoon(PlanetDecorator):
+class HasMoon(ObjectDecorator):
 
     def __init__(self, q, r, lats, longs):
         self.q = q

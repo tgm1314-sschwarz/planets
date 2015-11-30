@@ -1,9 +1,9 @@
 from OpenGL.GL import *
 from LoadImages import LoadImages
-from decorator.PlanetDecorator import PlanetDecorator
+from decorator.ObjectDecorator import ObjectDecorator
 
 
-class Texture(PlanetDecorator):
+class Texture(ObjectDecorator):
 
     def __init__(self, name):
         self.name = name

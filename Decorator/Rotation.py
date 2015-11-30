@@ -1,15 +1,16 @@
 from OpenGL.GL import *
-from decorator.PlanetDecorator import PlanetDecorator
+from decorator.ObjectDecorator import ObjectDecorator
 
 
-class Rotation(PlanetDecorator):
+class Rotation(ObjectDecorator):
 
-    def __init__(self, deg, x, y, z):
+    def __init__(self, deg, x, y, z, p):
+        self.p = p
         self.deg = deg
         self.x = x
         self.y = y
         self.z = z
-        self.create()
 
     def create(self):
         glRotatef(self.deg, self.x, self.y, self.z)
+        self.p.create()

@@ -60,13 +60,6 @@ class Controller:
                 quit()
 
         if event.type == pygame.MOUSEBUTTONUP:
-            """
-            if event.button == 1:
-                self.light = not self.light
-
-            if event.button == 3:
-                self.textures = not self.textures
-            """
             if event.button == 1:
                 if -780 <= self.x <= -580:
                     if -430 <= self.y <= -370:
