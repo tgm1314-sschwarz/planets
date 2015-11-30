@@ -9,8 +9,8 @@ class HasMoon(PlanetDecorator):
         self.r = r
         self.lats = lats
         self.longs = longs
-        self.create_sphere()
+        self.create()
 
-    def create_sphere(self):
+    def create(self):
         gluQuadricTexture(self.q, 1)
         gluSphere(self.q, self.r, self.lats, self.longs)

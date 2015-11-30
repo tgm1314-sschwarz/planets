@@ -1,15 +1,14 @@
 from OpenGL.GL import *
-
 from decorator.PlanetDecorator import PlanetDecorator
 
 
-class Translate(PlanetDecorator):
+class Translation(PlanetDecorator):
 
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
-        self.create_sphere()
+        self.create()
 
-    def create_sphere(self):
+    def create(self):
         glTranslatef(self.x, self.y, self.z)

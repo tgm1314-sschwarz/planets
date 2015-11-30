@@ -1,4 +1,3 @@
-from Controller import *
 from OpenGL.GL import *
 
 
@@ -6,7 +5,6 @@ class CreateButton:
 
     def __init__(self, button_name):
         self.bn = button_name
-        self.c = Controller()
 
     def init(self):
         glPushMatrix()

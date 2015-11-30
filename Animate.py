@@ -1,4 +1,4 @@
-from Sphere import *
+from CreateObject import *
 from CreateButton import *
 from Controller import *
 
@@ -12,11 +12,11 @@ class Animate:
         self.c = Controller()
 
         # spheres
-        self.sun = Sphere("sun")
-        self.earth = Sphere("earth")
-        self.moon = Sphere("moon")
-        self.mars = Sphere("mars")
-        self.saturn = Sphere("saturn")
+        self.sun = CreateObject("sun")
+        self.earth = CreateObject("earth")
+        self.moon = CreateObject("moon")
+        self.mars = CreateObject("mars")
+        self.saturn = CreateObject("saturn")
 
         self.b1 = CreateButton("b1")
         self.b2 = CreateButton("b2")
@@ -50,7 +50,7 @@ class Animate:
 
             glPushMatrix()
             self.c.textures_on_off("sun")
-            self.sun.create_sphere()
+            self.sun.create()
             glPopMatrix()
 
             # testing if light got turned on or off
@@ -59,23 +59,23 @@ class Animate:
             glPushMatrix()
             self.c.textures_on_off("earth")
             glRotatef(self.c.earth_r_speed, .0, 1.0, .0)
-            self.earth.create_sphere()
+            self.earth.create()
 
             self.c.textures_on_off("moon")
             glRotatef(self.c.moon_r_speed, .0, .0, 1.0)
-            self.moon.create_sphere()
+            self.moon.create()
             glPopMatrix()
 
             glPushMatrix()
             self.c.textures_on_off("mars")
             glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
-            self.mars.create_sphere()
+            self.mars.create()
             glPopMatrix()
 
             glPushMatrix()
             self.c.textures_on_off("saturn")
             glRotatef(self.c.saturn_r_speed, .0, 1.0, .0)
-            self.saturn.create_sphere()
+            self.saturn.create()
             glPopMatrix()
 
             """

@@ -1,6 +1,5 @@
 import pygame
-from OpenGL.GL import *
-from LoadImage import Image
+from LoadImages import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -16,15 +15,15 @@ class Controller:
         self.zoom = 0
         self.swagmode = False
 
-        self.i = Image()
-
-        self.sun_texture = self.i.load("pics/sunmap.jpg")
-        self.earth_texture = self.i.load("pics/earthmap.jpg")
-        self.moon_texture = self.i.load("pics/moonmap.jpg")
-        self.mars_texture = self.i.load("pics/marsmap.jpg")
-        self.saturn_texture = self.i.load("pics/saturnmap.jpg")
-        self.b1_texture = self.i.load("pics/b1.jpg")
-        self.b2_texture = self.i.load("pics/b2.jpg")
+        # textures
+        i = LoadImages()
+        self.sun_tex = i.load("pics/sunmap.jpg")
+        self.earth_tex = i.load("pics/earthmap.jpg")
+        self.moon_tex = i.load("pics/moonmap.jpg")
+        self.mars_tex = i.load("pics/marsmap.jpg")
+        self.saturn_tex = i.load("pics/saturnmap.jpg")
+        self.b1_tex = i.load("pics/b1.jpg")
+        self.b2_tex = i.load("pics/b2.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -105,19 +104,19 @@ class Controller:
             glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
             if name == "sun":
-                glBindTexture(GL_TEXTURE_2D, self.sun_texture)
+                glBindTexture(GL_TEXTURE_2D, self.sun_tex)
             elif name == "earth":
-                glBindTexture(GL_TEXTURE_2D, self.earth_texture)
+                glBindTexture(GL_TEXTURE_2D, self.earth_tex)
             elif name == "moon":
-                glBindTexture(GL_TEXTURE_2D, self.moon_texture)
+                glBindTexture(GL_TEXTURE_2D, self.moon_tex)
             elif name == "mars":
-                glBindTexture(GL_TEXTURE_2D, self.mars_texture)
+                glBindTexture(GL_TEXTURE_2D, self.mars_tex)
             elif name == "saturn":
-                glBindTexture(GL_TEXTURE_2D, self.saturn_texture)
+                glBindTexture(GL_TEXTURE_2D, self.saturn_tex)
             elif name == "b1":
-                glBindTexture(GL_TEXTURE_2D, self.b1_texture)
+                glBindTexture(GL_TEXTURE_2D, self.b1_tex)
             elif name == "b2":
-                glBindTexture(GL_TEXTURE_2D, self.b2_texture)
+                glBindTexture(GL_TEXTURE_2D, self.b2_tex)
 
     def get_mouse_pos(self):
         self.x, self.y = pygame.mouse.get_pos()

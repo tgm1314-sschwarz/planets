@@ -5,4 +5,4 @@ class Planet:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def create_sphere(self): pass
+    def create(self): pass

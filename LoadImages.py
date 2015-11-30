@@ -4,7 +4,7 @@ from OpenGL.GL import *
 __author__ = 'Gala & Schwarz'
 
 
-class Image:
+class LoadImages:
 
     @staticmethod
     def load(file):
@@ -25,6 +25,7 @@ class Image:
 
         return imgID
 
+    """
     @staticmethod
     def place_image(imgID):
         glEnable(GL_TEXTURE_2D)
@@ -33,3 +34,4 @@ class Image:
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
         glBindTexture(GL_TEXTURE_2D, imgID)
+    """

@@ -8,7 +8,7 @@ class Color(PlanetDecorator):
         self.r = r
         self.g = g
         self.b = b
-        self.create_sphere()
+        self.create()
 
-    def create_sphere(self):
+    def create(self):
         glColor3f(self.r, self.g, self.b)
