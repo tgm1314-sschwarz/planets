@@ -39,8 +39,8 @@ def main():
     Lighting()
 
     # starting to animate
-    Animate()
-
+    a = Animate()
+    a.animation()
 
 if __name__ == '__main__':
     main()

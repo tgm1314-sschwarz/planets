@@ -87,7 +87,7 @@ class Controller:
         else:
             glEnable(GL_LIGHTING)
 
-    def textures_on_off(self, name):
+    def textures_on_off(self, n):
         if not self.textures:
             glDisable(GL_TEXTURE_2D)
         else:
@@ -96,19 +96,19 @@ class Controller:
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
             glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
-            if name == "sun":
+            if n == "sun":
                 glBindTexture(GL_TEXTURE_2D, self.sun_tex)
-            elif name == "earth":
+            elif n == "earth":
                 glBindTexture(GL_TEXTURE_2D, self.earth_tex)
-            elif name == "moon":
+            elif n == "moon":
                 glBindTexture(GL_TEXTURE_2D, self.moon_tex)
-            elif name == "mars":
+            elif n == "mars":
                 glBindTexture(GL_TEXTURE_2D, self.mars_tex)
-            elif name == "saturn":
+            elif n == "saturn":
                 glBindTexture(GL_TEXTURE_2D, self.saturn_tex)
-            elif name == "b1":
+            elif n == "b1":
                 glBindTexture(GL_TEXTURE_2D, self.b1_tex)
-            elif name == "b2":
+            elif n == "b2":
                 glBindTexture(GL_TEXTURE_2D, self.b2_tex)
 
     def get_mouse_pos(self):

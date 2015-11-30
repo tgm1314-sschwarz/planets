@@ -1,6 +1,17 @@
-from CreateObject import *
-from CreateButton import *
 from Controller import *
+from Planet import *
+from Button import *
+
+from decorator.Translation import *
+from decorator.Rotation import *
+from decorator.Texture import *
+from decorator.Color import *
+from decorator.Ring import *
+from decorator.Moon import *
+
+
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -8,26 +19,14 @@ __author__ = 'Gala & Schwarz'
 class Animate:
 
     def __init__(self):
-        # Controller Object
+        # Controller
         self.c = Controller()
 
-        # planets
-        self.sun = CreateObject("sun")
-        self.earth = CreateObject("earth")
-        self.moon = CreateObject("moon")
-        self.mars = CreateObject("mars")
-        self.saturn = CreateObject("saturn")
+        # Object used to create things
+        self.o = Object()
 
-        # buttons
-        """
-        self.b1 = CreateObject("b1")
-        self.b2 = CreateObject("b2")
-        """
-        self.b1 = CreateButton("b1")
-        self.b2 = CreateButton("b2")
-
-        # starting to animate
-        self.animation()
+        # Quadrick used for Spheres
+        self.q = gluNewQuadric()
 
     def animation(self):
         while True:
@@ -47,58 +46,79 @@ class Animate:
             # clearing the window and starting to draw
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-            # drawing the buttons
+            # creating light button
             glPushMatrix()
             self.c.textures_on_off("b1")
-            self.b1.init()
-            self.c.textures_on_off("b2")
-            self.b2.init()
+            glDisable(GL_LIGHTING)
+            self.o = Rotation(-45, 1., .0, .0,
+                              Color(.3, .3, .3,
+                                    Button("b1")))
+            self.o.create()
             glPopMatrix()
-            """
-            glPushMatrix()
-            self.c.textures_on_off("b1")
-            self.b1.create()
-            self.c.textures_on_off("b2")
-            self.b2.create()
-            glPopMatrix()
-            """
 
+            # creating texture button
+            glPushMatrix()
+            self.c.textures_on_off("b2")
+            self.o = Rotation(-45, 1., .0, .0,
+                              Color(.3, .3, .3,
+                                    Button("b2")))
+            self.o.create()
+            glPopMatrix()
+
+            # creating sun
             glPushMatrix()
             self.c.textures_on_off("sun")
-            self.sun.create()
+            glDisable(GL_LIGHTING)
+            self.o = Rotation(-90, 1., .0, .0,
+                              Color(1.0, 1.0, .0,
+                                    Planet(self.q, 5., 30, 30)))
+            self.o.create()
             glPopMatrix()
 
             # testing if light got turned on or off
             self.c.light_on_off()
 
+            # creating earth
             glPushMatrix()
             self.c.textures_on_off("earth")
             glRotatef(self.c.earth_r_speed, .0, 1.0, .0)
-            self.earth.create()
+            self.o = Translation(15.0, .0, .0,
+                                 Rotation(-90, 1., .0, .0,
+                                          Color(.0, 1., .0,
+                                                Planet(self.q, 1.25, 30, 30))))
+            self.o.create()
 
             self.c.textures_on_off("moon")
             glRotatef(self.c.moon_r_speed, .0, .0, 1.0)
-            self.moon.create()
+            self.o = Translation(2., .0, .0,
+                                 Color(.5, .5, .5,
+                                       Planet(self.q, .25, 30, 30)))
+            self.o.create()
             glPopMatrix()
 
+            # creating mars
             glPushMatrix()
             self.c.textures_on_off("mars")
             glRotatef(self.c.mars_r_speed, .0, 1.0, .0)
-            self.mars.create()
+            self.o = Translation(-10., .0, .0,
+                                 Rotation(-90, 1., .0, .0,
+                                          Color(1., .34, .04,
+                                                Planet(self.q, 1.25, 30, 30))))
+            self.o.create()
             glPopMatrix()
 
+            # creating saturn
             glPushMatrix()
             self.c.textures_on_off("saturn")
             glRotatef(self.c.saturn_r_speed, .0, 1.0, .0)
-            self.saturn.create()
+            self.o = Translation(-22., .0, .0,
+                                 Ring(10,
+                                      Rotation(-90, 1., .0, .0,
+                                               Color(.0, .0, 1.,
+                                                     Planet(self.q, 1.5, 30, 30)))))
+            self.o.create()
             glPopMatrix()
 
-            """
-            # Ring
-            glRotatef(45, .0, 1.0, .0)
-            for i in range(10):
-                glutWireTorus(0.1, 2+(i*0.1), 30, 30)
-            """
             # Redrawing everything
             pygame.display.flip()
 

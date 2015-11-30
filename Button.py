@@ -9,32 +9,29 @@ class Button(Object):
 
     def create(self):
         if self.n == "b1":
-            glColor3f(.3, .3, .3)
-            glRotatef(-45, 1., .0, .0)
+            glBegin(GL_QUADS)
 
             glTexCoord2f(1, 0)
             glVertex2f(-40, 13)
-
             glTexCoord2f(1, 1)
             glVertex2f(-40, 16)
-
             glTexCoord2f(0, 1)
             glVertex2f(-30, 16)
-
             glTexCoord2f(0, 0)
             glVertex2f(-30, 13)
 
+            glEnd()
+
         elif self.n == "b2":
-            glColor3f(.3, .3, .3)
+            glBegin(GL_QUADS)
 
             glTexCoord2f(1, 0)
             glVertex2f(-40, 9)
-
             glTexCoord2f(1, 1)
             glVertex2f(-40, 12)
-
             glTexCoord2f(0, 1)
             glVertex2f(-30, 12)
-
             glTexCoord2f(0, 0)
             glVertex2f(-30, 9)
+
+            glEnd()
