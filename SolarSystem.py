@@ -27,11 +27,17 @@ def main():
 
     glMatrixMode(GL_PROJECTION)
 
-    gluPerspective(75, (display[0]/display[1]), 1, 50.0)
+    gluPerspective(75, (display[0]/display[1]), 1., 50.)
     glTranslatef(.0, 6.0, -30)
     glRotatef(45.0, 1.0, .0, .0)
 
     glMatrixMode(GL_MODELVIEW)
+
+    """
+    gluLookAt(.0, 6.0, -30,
+              .0, .0, .0,
+              .0, .0, 45.0)
+    """
 
     glutInit()
 

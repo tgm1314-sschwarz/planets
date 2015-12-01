@@ -16,9 +16,9 @@ class Button(Object):
             glTexCoord2f(1, 1)
             glVertex2f(-40, 16)
             glTexCoord2f(0, 1)
-            glVertex2f(-30, 16)
+            glVertex2f(-32, 16)
             glTexCoord2f(0, 0)
-            glVertex2f(-30, 13)
+            glVertex2f(-32, 13)
 
             glEnd()
 
@@ -30,8 +30,26 @@ class Button(Object):
             glTexCoord2f(1, 1)
             glVertex2f(-40, 12)
             glTexCoord2f(0, 1)
-            glVertex2f(-30, 12)
+            glVertex2f(-32, 12)
             glTexCoord2f(0, 0)
-            glVertex2f(-30, 9)
+            glVertex2f(-32, 9)
+
+            glEnd()
+
+        elif self.n == "tb1":
+            glBegin(GL_TRIANGLES)
+
+            glVertex2f(0, -28)
+            glVertex2f(-1.5, -26.5)
+            glVertex2f(1.5, -26.5)
+
+            glEnd()
+
+        elif self.n == "tb2":
+            glBegin(GL_TRIANGLES)
+
+            glVertex2f(0, 16.5)
+            glVertex2f(-1.5, 15)
+            glVertex2f(1.5, 15)
 
             glEnd()

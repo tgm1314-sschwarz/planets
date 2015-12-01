@@ -65,6 +65,20 @@ class Animate:
             self.o.create()
             glPopMatrix()
 
+            glPushMatrix()
+            self.o = Rotation(-45, 1., .0, .0,
+                              Color(.7, .7, .7,
+                                    Button("tb1")))
+            self.o.create()
+            glPopMatrix()
+
+            glPushMatrix()
+            self.o = Rotation(-45, 1., .0, .0,
+                              Color(.7, .7, .7,
+                                    Button("tb2")))
+            self.o.create()
+            glPopMatrix()
+
             # creating sun
             glPushMatrix()
             self.c.textures_on_off("sun")

@@ -15,6 +15,11 @@ class Controller:
         self.zoom = 0
         self.swagmode = False
 
+        # camera controlling
+        self.mid = True
+        self.top = False
+        self.bot = False
+
         # textures
         i = LoadImages()
         self.sun_tex = i.load("pics/sunmap.jpg")
@@ -67,6 +72,32 @@ class Controller:
                         self.light = not self.light
                     elif -350 <= self.y <= -290:
                         self.textures = not self.textures
+
+                if -30 <= self.x <= 30:
+                    if 400 <= self.y <= 430:
+                        if self.mid:
+                            self.bot = not self.bot
+                            self.mid = not self.mid
+                        elif self.top:
+                            self.mid = not self.mid
+                            self.top = not self.top
+                        elif self.bot:
+                            pass
+                        # print(self.top)
+                        # print(self.mid)
+                        # print(self.bot)
+                    if -440 <= self.y <= -410:
+                        if self.mid:
+                            self.top = not self.top
+                            self.mid = not self.mid
+                        elif self.bot:
+                            self.mid = not self.mid
+                            self.bot = not self.bot
+                        elif self.top:
+                            pass
+                        # print(self.top)
+                        # print(self.mid)
+                        # print(self.bot)
 
             if event.button == 4:
                 self.r_speed += 1
