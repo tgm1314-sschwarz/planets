@@ -23,14 +23,14 @@ class Controller:
 
         # textures
         i = LoadImages()
-        self.sun_tex = i.load("pics/sunmap.jpg")
-        self.earth_tex = i.load("pics/earthmap.jpg")
-        self.moon_tex = i.load("pics/moonmap.jpg")
-        self.mars_tex = i.load("pics/marsmap.jpg")
-        self.saturn_tex = i.load("pics/saturnmap.jpg")
-        self.b1_tex = i.load("pics/b1.jpg")
-        self.b2_tex = i.load("pics/b2.jpg")
-        self.legend = i.load("pics/LEGEND.jpg")
+        self.sun_tex = i.load("planets/pics/sunmap.jpg")
+        self.earth_tex = i.load("planets/pics/earthmap.jpg")
+        self.moon_tex = i.load("planets/pics/moonmap.jpg")
+        self.mars_tex = i.load("planets/pics/marsmap.jpg")
+        self.saturn_tex = i.load("planets/pics/saturnmap.jpg")
+        self.b1_tex = i.load("planets/pics/b1.jpg")
+        self.b2_tex = i.load("planets/pics/b2.jpg")
+        self.legend_tex = i.load("planets/pics/legend.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -143,6 +143,8 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.b1_tex)
             elif n == "b2":
                 glBindTexture(GL_TEXTURE_2D, self.b2_tex)
+            elif n == "legend":
+                glBindTexture(GL_TEXTURE_2D, self.legend_tex)
 
     def get_mouse_pos(self):
         self.x, self.y = pygame.mouse.get_pos()

@@ -75,6 +75,14 @@ class Animate(SolarSystemFactory):
             self.o.create()
             glPopMatrix()
 
+            glPushMatrix()
+            self.c.textures_on_off("legend")
+            self.o = Rotation(-45, 1., .0, .0,
+                              Color(.3, .3, .3,
+                                    Button("legend")))
+            self.o.create()
+            glPopMatrix()
+
             # creating sun
             glPushMatrix()
             self.c.textures_on_off("sun")

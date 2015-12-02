@@ -37,6 +37,20 @@ class Button(Object):
 
             glEnd()
 
+        elif self.n == "legend":
+            glBegin(GL_QUADS)
+
+            glTexCoord2f(1, 0)
+            glVertex2f(40, 0)
+            glTexCoord2f(1, 1)
+            glVertex2f(40, 16)
+            glTexCoord2f(0, 1)
+            glVertex2f(30, 16)
+            glTexCoord2f(0, 0)
+            glVertex2f(30, 0)
+
+            glEnd()
+
         elif self.n == "tb1":
             glBegin(GL_TRIANGLES)
 
