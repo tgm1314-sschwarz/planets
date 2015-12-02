@@ -1,5 +1,6 @@
-from Object import Object
 from OpenGL.GL import *
+
+from planets.factory.Object import *
 
 
 class Button(Object):

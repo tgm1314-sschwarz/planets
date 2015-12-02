@@ -1,22 +1,18 @@
-from Controller import *
-from Planet import *
-from Button import *
+from planets.Controller import *
 
-from decorator.Translation import *
-from decorator.Rotation import *
-from decorator.Texture import *
-from decorator.Color import *
-from decorator.Ring import *
-from decorator.Moon import *
+from planets.factory.SolarSystemFactory import *
+from planets.factory.Planet import *
+from planets.factory.Button import *
 
-
-from OpenGL.GL import *
-from OpenGL.GLU import *
+from planets.decorator.Translation import *
+from planets.decorator.Rotation import *
+from planets.decorator.Color import *
+from planets.decorator.Ring import *
 
 __author__ = 'Gala & Schwarz'
 
 
-class Animate:
+class Animate(SolarSystemFactory):
 
     def __init__(self):
         # Controller

@@ -1,8 +1,7 @@
 from pygame.locals import *
-from Lighting import *
-from Animate import *
-from Controller import *
-from OpenGL.GLUT import *
+
+from planets.Lighting import *
+from planets.factory.Animate import *
 
 __author__ = 'Gala & Schwarz'
 

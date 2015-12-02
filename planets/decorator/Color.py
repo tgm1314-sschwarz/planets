@@ -1,5 +1,6 @@
 from OpenGL.GL import *
-from decorator.ObjectDecorator import ObjectDecorator
+
+from planets.decorator.ObjectDecorator import *
 
 
 class Color(ObjectDecorator):

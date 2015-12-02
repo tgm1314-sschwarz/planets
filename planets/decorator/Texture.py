@@ -1,6 +1,6 @@
 from OpenGL.GL import *
-from LoadImages import LoadImages
-from decorator.ObjectDecorator import ObjectDecorator
+
+from planets.decorator.ObjectDecorator import *
 
 
 class Texture(ObjectDecorator):

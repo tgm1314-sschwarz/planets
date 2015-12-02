@@ -1,5 +1,6 @@
 import pygame
-from LoadImages import *
+
+from planets.LoadImages import *
 
 __author__ = 'Gala & Schwarz'
 

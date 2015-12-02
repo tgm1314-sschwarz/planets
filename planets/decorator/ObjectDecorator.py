@@ -1,5 +1,4 @@
-from abc import ABCMeta, abstractmethod
-from Object import Object
+from planets.factory.Object import *
 
 
 class ObjectDecorator(Object):

@@ -1,6 +1,7 @@
-from decorator.ObjectDecorator import ObjectDecorator
 from OpenGL.GL import *
 from OpenGL.GLUT import *
+
+from planets.decorator.ObjectDecorator import *
 
 
 class Ring(ObjectDecorator):
