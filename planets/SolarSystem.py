@@ -9,7 +9,7 @@ __author__ = 'Gala & Schwarz'
 def main():
 
     # window Position
-    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100, 50)
+    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (0, 0)
 
     # starting pygame
     pygame.init()

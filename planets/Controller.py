@@ -23,14 +23,14 @@ class Controller:
 
         # textures
         i = LoadImages()
-        self.sun_tex = i.load("planets/pics/sunmap.jpg")
-        self.earth_tex = i.load("planets/pics/earthmap.jpg")
-        self.moon_tex = i.load("planets/pics/moonmap.jpg")
-        self.mars_tex = i.load("planets/pics/marsmap.jpg")
-        self.saturn_tex = i.load("planets/pics/saturnmap.jpg")
-        self.b1_tex = i.load("planets/pics/b1.jpg")
-        self.b2_tex = i.load("planets/pics/b2.jpg")
-        self.legend_tex = i.load("planets/pics/legend.jpg")
+        self.sun_tex = i.load("pics/sunmap.jpg")
+        self.earth_tex = i.load("pics/earthmap.jpg")
+        self.moon_tex = i.load("pics/moonmap.jpg")
+        self.mars_tex = i.load("pics/marsmap.jpg")
+        self.saturn_tex = i.load("pics/saturnmap.jpg")
+        self.b1_tex = i.load("pics/b1.jpg")
+        self.b2_tex = i.load("pics/b2.jpg")
+        self.legend_tex = i.load("pics/legend.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -84,9 +84,9 @@ class Controller:
                             self.top = not self.top
                         elif self.bot:
                             pass
-                        # print(self.top)
-                        # print(self.mid)
-                        # print(self.bot)
+                        print(self.top)
+                        print(self.mid)
+                        print(self.bot)
                     if -440 <= self.y <= -410:
                         if self.mid:
                             self.top = not self.top
@@ -96,9 +96,9 @@ class Controller:
                             self.bot = not self.bot
                         elif self.top:
                             pass
-                        # print(self.top)
-                        # print(self.mid)
-                        # print(self.bot)
+                        print(self.top)
+                        print(self.mid)
+                        print(self.bot)
 
             if event.button == 4:
                 self.r_speed += 1
