@@ -14,23 +14,24 @@ class Controller:
         self.textures = False
         self.stop = False
         self.zoom = 0
-        self.swagmode = False
 
         # camera controlling
         self.mid = True
         self.top = False
         self.bot = False
+        self.cam_y = 25.
+        self.cam_z = -25.
 
         # textures
         i = LoadImages()
-        self.sun_tex = i.load("planets/pics/sunmap.jpg")
-        self.earth_tex = i.load("planets/pics/earthmap.jpg")
-        self.moon_tex = i.load("planets/pics/moonmap.jpg")
-        self.mars_tex = i.load("planets/pics/marsmap.jpg")
-        self.saturn_tex = i.load("planets/pics/saturnmap.jpg")
-        self.b1_tex = i.load("planets/pics/b1.jpg")
-        self.b2_tex = i.load("planets/pics/b2.jpg")
-        self.legend_tex = i.load("planets/pics/legend.jpg")
+        self.sun_tex = i.load("pics/sunmap.jpg")
+        self.earth_tex = i.load("pics/earthmap.jpg")
+        self.moon_tex = i.load("pics/moonmap.jpg")
+        self.mars_tex = i.load("pics/marsmap.jpg")
+        self.saturn_tex = i.load("pics/saturnmap.jpg")
+        self.b1_tex = i.load("pics/b1.jpg")
+        self.b2_tex = i.load("pics/b2.jpg")
+        self.legend_tex = i.load("pics/legend.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -45,22 +46,21 @@ class Controller:
 
     def key_pressed(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == pygame.K_w:
+            if event.key == pygame.K_UP:
                 self.r_speed += 1
-            if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+            if event.key == pygame.K_DOWN:
                 self.r_speed -= 1
 
-            if event.key == pygame.K_p or event.key == pygame.K_SPACE:
-                self.stop = not self.stop
+            if event.key == pygame.K_w:
+                self.cam_control("up")
+            if event.key == pygame.K_s:
+                self.cam_control("down")
 
             if event.key == pygame.K_l:
                 self.light = not self.light
 
             if event.key == pygame.K_t:
                 self.textures = not self.textures
-
-            if event.key == pygame.K_1 and pygame.key.get_mods() & pygame.KMOD_LCTRL:
-                self.swagmode = not self.swagmode
 
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
@@ -76,29 +76,9 @@ class Controller:
 
                 if -30 <= self.x <= 30:
                     if 400 <= self.y <= 430:
-                        if self.mid:
-                            self.bot = not self.bot
-                            self.mid = not self.mid
-                        elif self.top:
-                            self.mid = not self.mid
-                            self.top = not self.top
-                        elif self.bot:
-                            pass
-                        # print(self.top)
-                        # print(self.mid)
-                        # print(self.bot)
+                        self.cam_control("down")
                     if -440 <= self.y <= -410:
-                        if self.mid:
-                            self.top = not self.top
-                            self.mid = not self.mid
-                        elif self.bot:
-                            self.mid = not self.mid
-                            self.bot = not self.bot
-                        elif self.top:
-                            pass
-                        # print(self.top)
-                        # print(self.mid)
-                        # print(self.bot)
+                        self.cam_control("up")
 
             if event.button == 4:
                 self.r_speed += 1
@@ -108,6 +88,47 @@ class Controller:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+
+    def cam_control(self, move):
+        if move == "up":
+            if self.mid:
+                self.top = not self.top
+                self.mid = not self.mid
+                for i in range(25):
+                    self.cam_y += 1
+                    self.cam_z += 1
+                    if self.cam_y == 25.1:
+                        self.cam_y = 25
+            elif self.bot:
+                self.mid = not self.mid
+                self.bot = not self.bot
+                for i in range(25):
+                    self.cam_y += 1
+                    self.cam_z += 1
+                    if self.cam_y == 25.1:
+                        self.cam_y = 25
+            elif self.top:
+                pass
+
+        elif move == "down":
+            if self.mid:
+                self.bot = not self.bot
+                self.mid = not self.mid
+                for i in range(25):
+                    self.cam_y -= 1
+                    self.cam_z -= 1
+                    if self.cam_y == 0:
+                        self.cam_y = 0.1
+            elif self.top:
+                self.mid = not self.mid
+                self.top = not self.top
+                for i in range(25):
+                    self.cam_y -= 1
+                    self.cam_z -= 1
+                    if self.cam_y == 0:
+                        self.cam_y = 0.1
+            elif self.bot:
+                pass
 
     def stopped(self):
         while self.stop:

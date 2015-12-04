@@ -25,7 +25,6 @@ class LoadImages:
 
         return imgID
 
-    """
     @staticmethod
     def place_image(imgID):
         glEnable(GL_TEXTURE_2D)
@@ -34,4 +33,3 @@ class LoadImages:
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
         glBindTexture(GL_TEXTURE_2D, imgID)
-    """

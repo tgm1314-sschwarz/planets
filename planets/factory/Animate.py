@@ -46,7 +46,7 @@ class Animate(SolarSystemFactory):
             glPushMatrix()
             self.c.textures_on_off("b1")
             glDisable(GL_LIGHTING)
-            self.o = Rotation(-45, 1., .0, .0,
+            self.o = Rotation(45, .0, .0, 1.0,
                               Color(.3, .3, .3,
                                     Button("b1")))
             self.o.create()
@@ -55,21 +55,21 @@ class Animate(SolarSystemFactory):
             # creating texture button
             glPushMatrix()
             self.c.textures_on_off("b2")
-            self.o = Rotation(-45, 1., .0, .0,
+            self.o = Rotation(90, 1., .0, .0,
                               Color(.3, .3, .3,
                                     Button("b2")))
             self.o.create()
             glPopMatrix()
 
             glPushMatrix()
-            self.o = Rotation(-45, 1., .0, .0,
+            self.o = Rotation(90, 1., .0, .0,
                               Color(.7, .7, .7,
                                     Button("tb1")))
             self.o.create()
             glPopMatrix()
 
             glPushMatrix()
-            self.o = Rotation(-45, 1., .0, .0,
+            self.o = Rotation(90, 1., .0, .0,
                               Color(.7, .7, .7,
                                     Button("tb2")))
             self.o.create()
@@ -77,11 +77,16 @@ class Animate(SolarSystemFactory):
 
             glPushMatrix()
             self.c.textures_on_off("legend")
-            self.o = Rotation(-45, 1., .0, .0,
+            self.o = Rotation(90, 1., .0, .0,
                               Color(.3, .3, .3,
                                     Button("legend")))
             self.o.create()
             glPopMatrix()
+
+            glPushMatrix()
+            gluLookAt(.0, self.c.cam_y, self.c.cam_z,
+                      .0, .0, .0,
+                      .0, .0, 1.0)
 
             # creating sun
             glPushMatrix()
@@ -135,6 +140,8 @@ class Animate(SolarSystemFactory):
                                                Color(.0, .0, 1.,
                                                      Planet(self.q, 1.5, 30, 30)))))
             self.o.create()
+            glPopMatrix()
+
             glPopMatrix()
 
             # Redrawing everything

@@ -41,13 +41,13 @@ class Button(Object):
             glBegin(GL_QUADS)
 
             glTexCoord2f(1, 0)
-            glVertex2f(40, 0)
+            glVertex2f(40, -5)
             glTexCoord2f(1, 1)
             glVertex2f(40, 16)
             glTexCoord2f(0, 1)
-            glVertex2f(30, 16)
+            glVertex2f(25, 16)
             glTexCoord2f(0, 0)
-            glVertex2f(30, 0)
+            glVertex2f(25, -5)
 
             glEnd()
 
