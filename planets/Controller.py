@@ -1,6 +1,7 @@
 import pygame
 
 from planets.LoadImages import *
+from planets.Lighting import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -22,16 +23,23 @@ class Controller:
         self.cam_y = 25.
         self.cam_z = -25.
 
-        # textures
+        # set up the light
+        Lighting()
+
+        # planet textures
         i = LoadImages()
         self.sun_tex = i.load("pics/sunmap.jpg")
         self.earth_tex = i.load("pics/earthmap.jpg")
         self.moon_tex = i.load("pics/moonmap.jpg")
         self.mars_tex = i.load("pics/marsmap.jpg")
         self.saturn_tex = i.load("pics/saturnmap.jpg")
+
+        # button textures
         self.b1_tex = i.load("pics/b1.jpg")
         self.b2_tex = i.load("pics/b2.jpg")
         self.legend_tex = i.load("pics/legend.jpg")
+        self.rb1_tex = i.load("pics/rb1.jpg")
+        self.rb2_tex = i.load("pics/rb2.jpg")
 
         # speed of the different planets
         self.earth_r_speed = 0
@@ -56,6 +64,9 @@ class Controller:
             if event.key == pygame.K_s:
                 self.cam_control("down")
 
+            if event.key == pygame.K_p:
+                self.stop = not self.stop
+
             if event.key == pygame.K_l:
                 self.light = not self.light
 
@@ -68,10 +79,10 @@ class Controller:
 
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                if -780 <= self.x <= -580:
-                    if -430 <= self.y <= -370:
+                if -780 <= self.x <= -550:
+                    if -430 <= self.y <= -330:
                         self.light = not self.light
-                    elif -350 <= self.y <= -290:
+                    elif -310 <= self.y <= -215:
                         self.textures = not self.textures
 
                 if -30 <= self.x <= 30:
@@ -79,6 +90,12 @@ class Controller:
                         self.cam_control("down")
                     if -440 <= self.y <= -410:
                         self.cam_control("up")
+
+                if -780 <= self.x <= -740:
+                    if -155 <= self.y <= -115:
+                        self.r_speed += 1
+                    if -105 <= self.y <= -70:
+                        self.r_speed -= 1
 
             if event.button == 4:
                 self.r_speed += 1
@@ -141,9 +158,26 @@ class Controller:
         else:
             glEnable(GL_LIGHTING)
 
+    def button_textures_on(self, n):
+        glEnable(GL_TEXTURE_2D)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
+
+        if n == "b1":
+            glBindTexture(GL_TEXTURE_2D, self.b1_tex)
+        elif n == "b2":
+            glBindTexture(GL_TEXTURE_2D, self.b2_tex)
+        elif n == "legend":
+            glBindTexture(GL_TEXTURE_2D, self.legend_tex)
+        elif n == "rb1":
+            glBindTexture(GL_TEXTURE_2D, self.rb1_tex)
+        elif n == "rb2":
+            glBindTexture(GL_TEXTURE_2D, self.rb2_tex)
+
     def textures_on_off(self, n):
         if not self.textures:
-            glDisable(GL_TEXTURE_2D)
+            glBindTexture(GL_TEXTURE_2D, 0)
         else:
             glEnable(GL_TEXTURE_2D)
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
@@ -160,12 +194,6 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.mars_tex)
             elif n == "saturn":
                 glBindTexture(GL_TEXTURE_2D, self.saturn_tex)
-            elif n == "b1":
-                glBindTexture(GL_TEXTURE_2D, self.b1_tex)
-            elif n == "b2":
-                glBindTexture(GL_TEXTURE_2D, self.b2_tex)
-            elif n == "legend":
-                glBindTexture(GL_TEXTURE_2D, self.legend_tex)
 
     def get_mouse_pos(self):
         self.x, self.y = pygame.mouse.get_pos()

@@ -3,6 +3,8 @@ from OpenGL.GLUT import *
 
 from planets.decorator.ObjectDecorator import *
 
+__author__ = 'Gala & Schwarz'
+
 
 class Ring(ObjectDecorator):
 

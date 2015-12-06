@@ -2,6 +2,8 @@ from OpenGL.GL import *
 
 from planets.factory.Object import *
 
+__author__ = 'Gala & Schwarz'
+
 
 class Button(Object):
 
@@ -13,13 +15,13 @@ class Button(Object):
             glBegin(GL_QUADS)
 
             glTexCoord2f(1, 0)
-            glVertex2f(-40, 13)
+            glVertex2f(-40, 11)
             glTexCoord2f(1, 1)
             glVertex2f(-40, 16)
             glTexCoord2f(0, 1)
-            glVertex2f(-32, 16)
+            glVertex2f(-28, 16)
             glTexCoord2f(0, 0)
-            glVertex2f(-32, 13)
+            glVertex2f(-28, 11)
 
             glEnd()
 
@@ -27,13 +29,41 @@ class Button(Object):
             glBegin(GL_QUADS)
 
             glTexCoord2f(1, 0)
-            glVertex2f(-40, 9)
+            glVertex2f(-40, 5)
             glTexCoord2f(1, 1)
-            glVertex2f(-40, 12)
+            glVertex2f(-40, 10)
             glTexCoord2f(0, 1)
-            glVertex2f(-32, 12)
+            glVertex2f(-28, 10)
             glTexCoord2f(0, 0)
-            glVertex2f(-32, 9)
+            glVertex2f(-28, 5)
+
+            glEnd()
+
+        elif self.n == "rb1":
+            glBegin(GL_QUADS)
+
+            glTexCoord2f(1, 0)
+            glVertex2f(-40, 0)
+            glTexCoord2f(1, 1)
+            glVertex2f(-40, 2)
+            glTexCoord2f(0, 1)
+            glVertex2f(-38, 2)
+            glTexCoord2f(0, 0)
+            glVertex2f(-38, 0)
+
+            glEnd()
+
+        elif self.n == "rb2":
+            glBegin(GL_QUADS)
+
+            glTexCoord2f(1, 0)
+            glVertex2f(-40, -2.5)
+            glTexCoord2f(1, 1)
+            glVertex2f(-40, -0.5)
+            glTexCoord2f(0, 1)
+            glVertex2f(-38, -0.5)
+            glTexCoord2f(0, 0)
+            glVertex2f(-38, -2.5)
 
             glEnd()
 

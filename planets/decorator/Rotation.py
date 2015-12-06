@@ -2,6 +2,8 @@ from OpenGL.GL import *
 
 from planets.decorator.ObjectDecorator import *
 
+__author__ = 'Gala & Schwarz'
+
 
 class Rotation(ObjectDecorator):
 

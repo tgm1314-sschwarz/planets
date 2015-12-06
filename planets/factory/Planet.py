@@ -2,14 +2,17 @@ from OpenGL.GLU import *
 
 from planets.factory.Object import *
 
+__author__ = 'Gala & Schwarz'
+
 
 class Planet(Object):
 
-    def __init__(self, q, r, lats, longs):
-        self.q = q
+    def __init__(self, r):
         self.r = r
-        self.lats = lats
-        self.longs = longs
+
+        self.q = gluNewQuadric()
+        self.lats = 30
+        self.longs = 30
 
     def create(self):
         gluQuadricTexture(self.q, 1)

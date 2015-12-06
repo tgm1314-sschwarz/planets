@@ -1,7 +1,6 @@
 from pygame.locals import *
 
-from planets.Lighting import *
-from planets.factory.Animate import *
+from planets.factory.SolarSystem import *
 
 __author__ = 'Gala & Schwarz'
 
@@ -27,29 +26,13 @@ def main():
     glMatrixMode(GL_PROJECTION)
 
     gluPerspective(75, (display[0]/display[1]), 1., 100.)
-    #glTranslatef(.0, 6.0, .0)
-    #glRotatef(45.0, 1.0, .0, .0)
 
     glMatrixMode(GL_MODELVIEW)
 
-    """
-    # z-upv:
-    # y=50., z=0     ...90 Grad
-    # y=25., z=-25   ...45 Grad
-    # y=.1, z=-50  ...0 Grad
-
-    gluLookAt(.0, 25.0, -25.0,
-              .0, .0, .0,
-              .0, .0, 1.0)
-    """
-
     glutInit()
 
-    # set up the light
-    Lighting()
-
     # starting to animate
-    a = Animate()
+    a = SolarSystem()
     a.animation()
 
 if __name__ == '__main__':
