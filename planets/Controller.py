@@ -14,7 +14,6 @@ class Controller:
         self.light = False
         self.textures = False
         self.stop = False
-        self.zoom = 0
 
         # camera controlling
         self.mid = True
