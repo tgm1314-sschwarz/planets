@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SolarSystem &mdash; Solar System 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/Slate/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Solar System 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Solar System</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Start.html">Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Controller.html">Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LoadImages.html">LoadImages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SolarSystemFactory.html">SolarSystemFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SolarSystem.html">SolarSystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Object.html">Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Planet.html">Planet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Button.html">Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ObjectDecorator.html">ObjectDecorator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Color.html">Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orbit.html">Orbit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Ring.html">Ring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rotation.html">Rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Translation.html">Translation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for SolarSystem</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">planets.Controller</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">planets.factory.SolarSystemFactory</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.factory.Planet</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.factory.Button</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">planets.decorator.Translation</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.decorator.Rotation</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.decorator.Color</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.decorator.Orbit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.decorator.Moon</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.decorator.Ring</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Gala &amp; Schwarz&#39;</span>
+
+
+<div class="viewcode-block" id="SolarSystem"><a class="viewcode-back" href="../SolarSystem.html#SolarSystem.SolarSystem">[docs]</a><span class="k">class</span> <span class="nc">SolarSystem</span><span class="p">(</span><span class="n">SolarSystemFactory</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SolarSystem.__init__"><a class="viewcode-back" href="../SolarSystem.html#SolarSystem.SolarSystem.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Controller</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+
+        <span class="c"># Object used to create things</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Object</span><span class="p">()</span>
+
+        <span class="c"># gluNewQuadric used for Spheres</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">gluNewQuadric</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="SolarSystem.animation"><a class="viewcode-back" href="../SolarSystem.html#SolarSystem.SolarSystem.animation">[docs]</a>    <span class="k">def</span> <span class="nf">animation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c"># get the OpenGL coordinates of the mouse position</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">get_mouse_pos</span><span class="p">()</span>
+
+            <span class="c"># testing if a key got pressed</span>
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">key_pressed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+            <span class="c"># testing if the game got paused</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">stopped</span><span class="p">()</span>
+
+            <span class="c"># increasing the speed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">increase</span><span class="p">()</span>
+
+            <span class="c"># clearing the window and starting to draw</span>
+            <span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
+
+            <span class="c"># open button view</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+
+            <span class="c"># creating the camera for the buttons, so they don&#39;t change</span>
+            <span class="c"># if the planet camera is changed</span>
+            <span class="n">gluLookAt</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">30.0</span><span class="p">,</span>
+                      <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                      <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">glTranslatef</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">glRotatef</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
+
+            <span class="c"># creating light button</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;b1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;b1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="c"># creating texture button</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;b2&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;b2&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="c"># creating in and decrease rotation speed button</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;rb1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;rb1&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;rb2&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;rb2&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="c"># creating triangle up and down button</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span>
+                           <span class="n">Button</span><span class="p">(</span><span class="s">&quot;tb1&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span>
+                           <span class="n">Button</span><span class="p">(</span><span class="s">&quot;tb2&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="c"># creating legend</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                           <span class="n">Button</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="c"># close button view</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># open planet view</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+
+            <span class="c"># camera for planets that can be controlled</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            # z-upv:</span>
+<span class="sd">            # y=50., z=0     ...90 Grad</span>
+<span class="sd">            # y=25., z=-25   ...45 Grad</span>
+<span class="sd">            # y=.1, z=-50    ...0 Grad</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">gluLookAt</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">cam_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">cam_z</span><span class="p">,</span>
+                      <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                      <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+            <span class="c"># creating sun</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">textures_on_off</span><span class="p">(</span><span class="s">&quot;sun&quot;</span><span class="p">)</span>
+            <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                              <span class="n">Color</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                    <span class="n">Planet</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># testing if light got turned on or off</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">light_on_off</span><span class="p">()</span>
+
+            <span class="c"># creating earth</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">textures_on_off</span><span class="p">(</span><span class="s">&quot;earth&quot;</span><span class="p">)</span>
+            <span class="n">glRotatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">earth_r_speed</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="mf">15.0</span><span class="p">,</span>
+                           <span class="n">Translation</span><span class="p">(</span><span class="mf">15.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">Rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                                <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                                      <span class="n">Planet</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)))))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">textures_on_off</span><span class="p">(</span><span class="s">&quot;moon&quot;</span><span class="p">)</span>
+            <span class="n">glRotatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">moon_r_speed</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Rotation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                              <span class="n">Orbit</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span>
+                                    <span class="n">Translation</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                                <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span>
+                                                      <span class="n">Planet</span><span class="p">(</span><span class="o">.</span><span class="mi">25</span><span class="p">)))))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># creating mars</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">textures_on_off</span><span class="p">(</span><span class="s">&quot;mars&quot;</span><span class="p">)</span>
+            <span class="n">glRotatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">mars_r_speed</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span>
+                           <span class="n">Translation</span><span class="p">(</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">Rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                                <span class="n">Color</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">34</span><span class="p">,</span> <span class="o">.</span><span class="mo">04</span><span class="p">,</span>
+                                                      <span class="n">Planet</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)))))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># creating saturn</span>
+            <span class="n">glPushMatrix</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">textures_on_off</span><span class="p">(</span><span class="s">&quot;saturn&quot;</span><span class="p">)</span>
+            <span class="n">glRotatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">saturn_r_speed</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Orbit</span><span class="p">(</span><span class="mf">22.0</span><span class="p">,</span>
+                           <span class="n">Translation</span><span class="p">(</span><span class="o">-</span><span class="mf">22.0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                       <span class="n">Ring</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>
+                                            <span class="n">Rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                                                     <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span>
+                                                           <span class="n">Planet</span><span class="p">(</span><span class="mf">1.5</span><span class="p">))))))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># close planet view</span>
+            <span class="n">glPopMatrix</span><span class="p">()</span>
+
+            <span class="c"># Redrawing everything</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+
+            <span class="c"># Delay</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></div></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Gala &amp; Schwarz.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

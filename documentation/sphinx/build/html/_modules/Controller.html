@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Controller &mdash; Solar System 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/Slate/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Solar System 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Solar System</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Start.html">Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Controller.html">Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Lighting.html">Lighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LoadImages.html">LoadImages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SolarSystemFactory.html">SolarSystemFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SolarSystem.html">SolarSystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Object.html">Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Planet.html">Planet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Button.html">Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ObjectDecorator.html">ObjectDecorator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Color.html">Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orbit.html">Orbit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Ring.html">Ring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rotation.html">Rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Translation.html">Translation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for Controller</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">pygame</span>
+
+<span class="kn">from</span> <span class="nn">planets.LoadImages</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">planets.Lighting</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;Gala &amp; Schwarz&#39;</span>
+
+
+<div class="viewcode-block" id="Controller"><a class="viewcode-back" href="../Controller.html#Controller.Controller">[docs]</a><span class="k">class</span> <span class="nc">Controller</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Controller.__init__"><a class="viewcode-back" href="../Controller.html#Controller.Controller.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># control variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">light</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">textures</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># camera controlling</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">=</span> <span class="mf">25.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cam_z</span> <span class="o">=</span> <span class="o">-</span><span class="mf">25.</span>
+
+        <span class="c"># set up the light</span>
+        <span class="n">Lighting</span><span class="p">()</span>
+
+        <span class="c"># planet textures</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">LoadImages</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sun_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/sunmap.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">earth_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/earthmap.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">moon_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/moonmap.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mars_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/marsmap.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saturn_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/saturnmap.jpg&quot;</span><span class="p">)</span>
+
+        <span class="c"># button textures</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b1_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/b1.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b2_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/b2.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legend_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/legend.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rb1_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/rb1.jpg&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rb2_tex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&quot;pics/rb2.jpg&quot;</span><span class="p">)</span>
+
+        <span class="c"># speed of the different planets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">earth_r_speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">moon_r_speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mars_r_speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saturn_r_speed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saturn_ring_speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
+
+        <span class="c"># mouse coordinates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">.</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">0</span>
+</div>
+<div class="viewcode-block" id="Controller.key_pressed"><a class="viewcode-back" href="../Controller.html#Controller.Controller.key_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">KEYDOWN</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_UP</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_DOWN</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cam_control</span><span class="p">(</span><span class="s">&quot;up&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cam_control</span><span class="p">(</span><span class="s">&quot;down&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_p</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_l</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">light</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">light</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_t</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">textures</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">textures</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_ESCAPE</span><span class="p">:</span>
+                <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+                <span class="n">quit</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">MOUSEBUTTONUP</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="o">-</span><span class="mi">780</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">550</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="o">-</span><span class="mi">430</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">330</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">light</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">light</span>
+                    <span class="k">elif</span> <span class="o">-</span><span class="mi">310</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">215</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">textures</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">textures</span>
+
+                <span class="k">if</span> <span class="o">-</span><span class="mi">30</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="mi">400</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">430</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_control</span><span class="p">(</span><span class="s">&quot;down&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="o">-</span><span class="mi">440</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">410</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_control</span><span class="p">(</span><span class="s">&quot;up&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="o">-</span><span class="mi">780</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">740</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="o">-</span><span class="mi">155</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">115</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="o">-</span><span class="mi">105</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">70</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+            <span class="n">quit</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Controller.cam_control"><a class="viewcode-back" href="../Controller.html#Controller.Controller.cam_control">[docs]</a>    <span class="k">def</span> <span class="nf">cam_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="s">&quot;up&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_z</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">==</span> <span class="mf">25.1</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">=</span> <span class="mi">25</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bot</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_z</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">==</span> <span class="mf">25.1</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">=</span> <span class="mi">25</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">elif</span> <span class="n">move</span> <span class="o">==</span> <span class="s">&quot;down&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bot</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_z</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">=</span> <span class="mf">0.1</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cam_z</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">cam_y</span> <span class="o">=</span> <span class="mf">0.1</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot</span><span class="p">:</span>
+                <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="Controller.stopped"><a class="viewcode-back" href="../Controller.html#Controller.Controller.stopped">[docs]</a>    <span class="k">def</span> <span class="nf">stopped</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">key_pressed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Controller.light_on_off"><a class="viewcode-back" href="../Controller.html#Controller.Controller.light_on_off">[docs]</a>    <span class="k">def</span> <span class="nf">light_on_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">light</span><span class="p">:</span>
+            <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Controller.button_textures_on"><a class="viewcode-back" href="../Controller.html#Controller.Controller.button_textures_on">[docs]</a>    <span class="k">def</span> <span class="nf">button_textures_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">)</span>
+        <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
+        <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
+        <span class="n">glTexEnvf</span><span class="p">(</span><span class="n">GL_TEXTURE_ENV</span><span class="p">,</span> <span class="n">GL_TEXTURE_ENV_MODE</span><span class="p">,</span> <span class="n">GL_DECAL</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;b1&quot;</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b1_tex</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;b2&quot;</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b2_tex</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;legend&quot;</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend_tex</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;rb1&quot;</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rb1_tex</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;rb2&quot;</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rb2_tex</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Controller.textures_on_off"><a class="viewcode-back" href="../Controller.html#Controller.Controller.textures_on_off">[docs]</a>    <span class="k">def</span> <span class="nf">textures_on_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">textures</span><span class="p">:</span>
+            <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">)</span>
+            <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
+            <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
+            <span class="n">glTexEnvf</span><span class="p">(</span><span class="n">GL_TEXTURE_ENV</span><span class="p">,</span> <span class="n">GL_TEXTURE_ENV_MODE</span><span class="p">,</span> <span class="n">GL_DECAL</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;sun&quot;</span><span class="p">:</span>
+                <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sun_tex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;earth&quot;</span><span class="p">:</span>
+                <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">earth_tex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;moon&quot;</span><span class="p">:</span>
+                <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">moon_tex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;mars&quot;</span><span class="p">:</span>
+                <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mars_tex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s">&quot;saturn&quot;</span><span class="p">:</span>
+                <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">saturn_tex</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Controller.get_mouse_pos"><a class="viewcode-back" href="../Controller.html#Controller.Controller.get_mouse_pos">[docs]</a>    <span class="k">def</span> <span class="nf">get_mouse_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">800</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="mi">450</span>
+</div>
+<div class="viewcode-block" id="Controller.increase"><a class="viewcode-back" href="../Controller.html#Controller.Controller.increase">[docs]</a>    <span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">earth_r_speed</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">moon_r_speed</span> <span class="o">+=</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mars_r_speed</span> <span class="o">+=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saturn_r_speed</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span></div></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Gala &amp; Schwarz.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
