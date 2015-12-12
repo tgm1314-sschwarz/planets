@@ -132,8 +132,27 @@
 
 
 <div class="viewcode-block" id="Controller"><a class="viewcode-back" href="../Controller.html#Controller.Controller">[docs]</a><span class="k">class</span> <span class="nc">Controller</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that is used to control Buttons and Keys. It also places the Textures for the Buttons.</span>
+
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`__init__`: initiates all variables used to control everything</span>
+<span class="sd">        * :func:`key_pressed`: method that constantly checks if a key or button gets pressed</span>
+<span class="sd">        * :func:`cam_control`: method that gets called if either the up or down arrow button or the W or S Key gets pressed and that controls the camera depending on the current position it is in and the button or key that got pressed</span>
+<span class="sd">        * :func:`stopped`: Stops the Animation if the P key is pressed</span>
+<span class="sd">        * :func:`light_on_off`: Turns the light either on or off if the L Key or the Lighting Button is pressed</span>
+<span class="sd">        * :func:`button_textures_on`: Places the textures on the buttons, so that they won&#39;t be disabled if the textures get disabled</span>
+<span class="sd">        * :func:`textures_on_off`: Dis or enables the textures if either the T Key or the Textures Button is pressed</span>
+<span class="sd">        * :func:`get_mouse_pos`: Checks the mouse position at every frame</span>
+<span class="sd">        * :func:`increase`: constantly changes the rotation speeds for all planets so that they keep moving</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Controller.__init__"><a class="viewcode-back" href="../Controller.html#Controller.Controller.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets all the variables to control the Solar System. Such as the rotation speed</span>
+<span class="sd">        or if the light or textures are on or off. Also all the textures are loaded here and saved as</span>
+<span class="sd">        Objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c"># control variables</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">light</span> <span class="o">=</span> <span class="bp">False</span>
@@ -177,6 +196,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">0</span>
 </div>
 <div class="viewcode-block" id="Controller.key_pressed"><a class="viewcode-back" href="../Controller.html#Controller.Controller.key_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Key and Button listener method. Tests if any Key or any button on the screen gets pressed.</span>
+
+<span class="sd">        :param event: PyGame event Object that has a type and a key value and is used as a key listener</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">KEYDOWN</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_UP</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -231,6 +254,11 @@
             <span class="n">quit</span><span class="p">()</span>
 </div>
 <div class="viewcode-block" id="Controller.cam_control"><a class="viewcode-back" href="../Controller.html#Controller.Controller.cam_control">[docs]</a>    <span class="k">def</span> <span class="nf">cam_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to control the camera. This method is called if either the up/down arrow button or W/S is pressed.</span>
+
+<span class="sd">        :param move: Either &quot;up&quot; or &quot;down&quot;, depending on the current camera position and the button or key pressed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="s">&quot;up&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">top</span>
@@ -272,17 +300,28 @@
                 <span class="k">pass</span>
 </div>
 <div class="viewcode-block" id="Controller.stopped"><a class="viewcode-back" href="../Controller.html#Controller.Controller.stopped">[docs]</a>    <span class="k">def</span> <span class="nf">stopped</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method that gets is used to Pause the game.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">key_pressed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Controller.light_on_off"><a class="viewcode-back" href="../Controller.html#Controller.Controller.light_on_off">[docs]</a>    <span class="k">def</span> <span class="nf">light_on_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dis- and Enables the light if either L or the Light Button is pressed</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">light</span><span class="p">:</span>
             <span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_LIGHTING</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Controller.button_textures_on"><a class="viewcode-back" href="../Controller.html#Controller.Controller.button_textures_on">[docs]</a>    <span class="k">def</span> <span class="nf">button_textures_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Places the Textures on the buttons, so that they cant be disabled like the planet textures can</span>
+
+<span class="sd">        :param n: Name of the button that wants to get a texture placed on</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">glEnable</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">)</span>
         <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
         <span class="n">glTexParameterf</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">)</span>
@@ -300,6 +339,11 @@
             <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rb2_tex</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Controller.textures_on_off"><a class="viewcode-back" href="../Controller.html#Controller.Controller.textures_on_off">[docs]</a>    <span class="k">def</span> <span class="nf">textures_on_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Places the textures on the Planets and disables them if the T key or the Texture button is pressed.</span>
+
+<span class="sd">        :param n: Name of the planet that wants to get a texture mapped on.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">textures</span><span class="p">:</span>
             <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -320,11 +364,17 @@
                 <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">saturn_tex</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Controller.get_mouse_pos"><a class="viewcode-back" href="../Controller.html#Controller.Controller.get_mouse_pos">[docs]</a>    <span class="k">def</span> <span class="nf">get_mouse_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the current mouse position of every frame, which is used to test if the mouse got clicked over a button</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">800</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-=</span> <span class="mi">450</span>
 </div>
 <div class="viewcode-block" id="Controller.increase"><a class="viewcode-back" href="../Controller.html#Controller.Controller.increase">[docs]</a>    <span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Always increases the different rotation speeds for the different planets, so that they keep rotating</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">earth_r_speed</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">moon_r_speed</span> <span class="o">+=</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mars_r_speed</span> <span class="o">+=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_speed</span>

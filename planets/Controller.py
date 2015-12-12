@@ -7,8 +7,27 @@ __author__ = 'Gala & Schwarz'
 
 
 class Controller:
+    """
+    Class that is used to control Buttons and Keys. It also places the Textures for the Buttons.
+
+    **methods**:
+        * :func:`__init__`: initiates all variables used to control everything
+        * :func:`key_pressed`: method that constantly checks if a key or button gets pressed
+        * :func:`cam_control`: method that gets called if either the up or down arrow button or the W or S Key gets pressed and that controls the camera depending on the current position it is in and the button or key that got pressed
+        * :func:`stopped`: Stops the Animation if the P key is pressed
+        * :func:`light_on_off`: Turns the light either on or off if the L Key or the Lighting Button is pressed
+        * :func:`button_textures_on`: Places the textures on the buttons, so that they won't be disabled if the textures get disabled
+        * :func:`textures_on_off`: Dis or enables the textures if either the T Key or the Textures Button is pressed
+        * :func:`get_mouse_pos`: Checks the mouse position at every frame
+        * :func:`increase`: constantly changes the rotation speeds for all planets so that they keep moving
+    """
 
     def __init__(self):
+        """
+        Sets all the variables to control the Solar System. Such as the rotation speed
+        or if the light or textures are on or off. Also all the textures are loaded here and saved as
+        Objects.
+        """
         # control variables
         self.r_speed = 1
         self.light = False
@@ -52,6 +71,10 @@ class Controller:
         self.y = .0
 
     def key_pressed(self, event):
+        """Key and Button listener method. Tests if any Key or any button on the screen gets pressed.
+
+        :param event: PyGame event Object that has a type and a key value and is used as a key listener
+        """
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 self.r_speed += 1
@@ -106,6 +129,11 @@ class Controller:
             quit()
 
     def cam_control(self, move):
+        """
+        Method to control the camera. This method is called if either the up/down arrow button or W/S is pressed.
+
+        :param move: Either "up" or "down", depending on the current camera position and the button or key pressed.
+        """
         if move == "up":
             if self.mid:
                 self.top = not self.top
@@ -147,17 +175,28 @@ class Controller:
                 pass
 
     def stopped(self):
+        """
+        Method that gets is used to Pause the game.
+        """
         while self.stop:
             for event in pygame.event.get():
                 self.key_pressed(event)
 
     def light_on_off(self):
+        """
+        Dis- and Enables the light if either L or the Light Button is pressed
+        """
         if not self.light:
             glDisable(GL_LIGHTING)
         else:
             glEnable(GL_LIGHTING)
 
     def button_textures_on(self, n):
+        """
+        Places the Textures on the buttons, so that they cant be disabled like the planet textures can
+
+        :param n: Name of the button that wants to get a texture placed on
+        """
         glEnable(GL_TEXTURE_2D)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
@@ -175,6 +214,11 @@ class Controller:
             glBindTexture(GL_TEXTURE_2D, self.rb2_tex)
 
     def textures_on_off(self, n):
+        """
+        Places the textures on the Planets and disables them if the T key or the Texture button is pressed.
+
+        :param n: Name of the planet that wants to get a texture mapped on.
+        """
         if not self.textures:
             glBindTexture(GL_TEXTURE_2D, 0)
         else:
@@ -195,11 +239,17 @@ class Controller:
                 glBindTexture(GL_TEXTURE_2D, self.saturn_tex)
 
     def get_mouse_pos(self):
+        """
+        Gets the current mouse position of every frame, which is used to test if the mouse got clicked over a button
+        """
         self.x, self.y = pygame.mouse.get_pos()
         self.x -= 800
         self.y -= 450
 
     def increase(self):
+        """
+        Always increases the different rotation speeds for the different planets, so that they keep rotating
+        """
         self.earth_r_speed += 0.5 * self.r_speed
         self.moon_r_speed += 3 * self.r_speed
         self.mars_r_speed += 0.3 * self.r_speed

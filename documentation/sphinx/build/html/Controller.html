@@ -136,50 +136,109 @@
 <dt id="Controller.Controller">
 <em class="property">class </em><code class="descclassname">Controller.</code><code class="descname">Controller</code><a class="reference internal" href="_modules/Controller.html#Controller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class that is used to control Buttons and Keys. It also places the Textures for the Buttons.</p>
+<dl class="docutils">
+<dt><strong>methods</strong>:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="#Controller.Controller.__init__" title="Controller.Controller.__init__"><code class="xref py py-func docutils literal"><span class="pre">__init__()</span></code></a>: initiates all variables used to control everything</li>
+<li><a class="reference internal" href="#Controller.Controller.key_pressed" title="Controller.Controller.key_pressed"><code class="xref py py-func docutils literal"><span class="pre">key_pressed()</span></code></a>: method that constantly checks if a key or button gets pressed</li>
+<li><a class="reference internal" href="#Controller.Controller.cam_control" title="Controller.Controller.cam_control"><code class="xref py py-func docutils literal"><span class="pre">cam_control()</span></code></a>: method that gets called if either the up or down arrow button or the W or S Key gets pressed and that controls the camera depending on the current position it is in and the button or key that got pressed</li>
+<li><a class="reference internal" href="#Controller.Controller.stopped" title="Controller.Controller.stopped"><code class="xref py py-func docutils literal"><span class="pre">stopped()</span></code></a>: Stops the Animation if the P key is pressed</li>
+<li><a class="reference internal" href="#Controller.Controller.light_on_off" title="Controller.Controller.light_on_off"><code class="xref py py-func docutils literal"><span class="pre">light_on_off()</span></code></a>: Turns the light either on or off if the L Key or the Lighting Button is pressed</li>
+<li><a class="reference internal" href="#Controller.Controller.button_textures_on" title="Controller.Controller.button_textures_on"><code class="xref py py-func docutils literal"><span class="pre">button_textures_on()</span></code></a>: Places the textures on the buttons, so that they won&#8217;t be disabled if the textures get disabled</li>
+<li><a class="reference internal" href="#Controller.Controller.textures_on_off" title="Controller.Controller.textures_on_off"><code class="xref py py-func docutils literal"><span class="pre">textures_on_off()</span></code></a>: Dis or enables the textures if either the T Key or the Textures Button is pressed</li>
+<li><a class="reference internal" href="#Controller.Controller.get_mouse_pos" title="Controller.Controller.get_mouse_pos"><code class="xref py py-func docutils literal"><span class="pre">get_mouse_pos()</span></code></a>: Checks the mouse position at every frame</li>
+<li><a class="reference internal" href="#Controller.Controller.increase" title="Controller.Controller.increase"><code class="xref py py-func docutils literal"><span class="pre">increase()</span></code></a>: constantly changes the rotation speeds for all planets so that they keep moving</li>
+</ul>
+</dd>
+</dl>
 <dl class="method">
 <dt id="Controller.Controller.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.__init__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets all the variables to control the Solar System. Such as the rotation speed
+or if the light or textures are on or off. Also all the textures are loaded here and saved as
+Objects.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.button_textures_on">
 <code class="descname">button_textures_on</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.button_textures_on"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.button_textures_on" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Places the Textures on the buttons, so that they cant be disabled like the planet textures can</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> &#8211; Name of the button that wants to get a texture placed on</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.cam_control">
 <code class="descname">cam_control</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.cam_control"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.cam_control" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Method to control the camera. This method is called if either the up/down arrow button or W/S is pressed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>move</strong> &#8211; Either &#8220;up&#8221; or &#8220;down&#8221;, depending on the current camera position and the button or key pressed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.get_mouse_pos">
 <code class="descname">get_mouse_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.get_mouse_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.get_mouse_pos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Gets the current mouse position of every frame, which is used to test if the mouse got clicked over a button</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.increase">
 <code class="descname">increase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.increase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.increase" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Always increases the different rotation speeds for the different planets, so that they keep rotating</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.key_pressed">
 <code class="descname">key_pressed</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.key_pressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.key_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Key and Button listener method. Tests if any Key or any button on the screen gets pressed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> &#8211; PyGame event Object that has a type and a key value and is used as a key listener</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.light_on_off">
 <code class="descname">light_on_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.light_on_off"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.light_on_off" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Dis- and Enables the light if either L or the Light Button is pressed</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.stopped">
 <code class="descname">stopped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.stopped"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.stopped" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Method that gets is used to Pause the game.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Controller.Controller.textures_on_off">
 <code class="descname">textures_on_off</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Controller.html#Controller.textures_on_off"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Controller.Controller.textures_on_off" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Places the textures on the Planets and disables them if the T key or the Texture button is pressed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> &#8211; Name of the planet that wants to get a texture mapped on.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 

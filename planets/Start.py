@@ -6,6 +6,9 @@ __author__ = 'Gala & Schwarz'
 
 
 def main():
+    """
+    Function that initiates a PyGame window and the first perspective. Then it starts the animation of the Solar System.
+    """
 
     # window Position
     os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (200, 50)

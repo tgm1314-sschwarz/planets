@@ -4,8 +4,16 @@ __author__ = 'Gala & Schwarz'
 
 
 class Lighting:
+    """
+    Class that creates the lighting.
 
+    **methods**:
+        * :func:`__init__`: creates and places the light for the planets
+    """
     def __init__(self):
+        """
+        creates and places the light for the planets
+        """
         zeros = (0.15, 0.15, 0.15, 0.3)
         ones = (1.0, 1.0, 1.0, 0.3)
         half = (0.5, 0.5, 0.5, 0.5)
