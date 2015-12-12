@@ -5,10 +5,21 @@ __author__ = 'Gala & Schwarz'
 
 
 class LoadImages:
+    """
+    Class that loads the images for the buttns and also for the planets
+
+    **methods**:
+        * :func:`load`: loads an image with PIL and returns the imgID of the loaded img
+    """
 
     @staticmethod
     def load(file):
+        """
+        loads an image with PIL.
 
+        :param file: name of the file you want to load
+        :return: imgID of the img that got loaded
+        """
         img = open(file)
 
         try:

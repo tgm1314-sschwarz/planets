@@ -130,10 +130,21 @@
 
 
 <div class="viewcode-block" id="LoadImages"><a class="viewcode-back" href="../LoadImages.html#LoadImages.LoadImages">[docs]</a><span class="k">class</span> <span class="nc">LoadImages</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that loads the images for the buttns and also for the planets</span>
+
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`load`: loads an image with PIL and returns the imgID of the loaded img</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="LoadImages.load"><a class="viewcode-back" href="../LoadImages.html#LoadImages.LoadImages.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="nb">file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        loads an image with PIL.</span>
 
+<span class="sd">        :param file: name of the file you want to load</span>
+<span class="sd">        :return: imgID of the img that got loaded</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">img</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
 
         <span class="k">try</span><span class="p">:</span>
