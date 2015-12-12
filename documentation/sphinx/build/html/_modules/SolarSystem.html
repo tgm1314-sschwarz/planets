@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/Slate/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/Paper/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -191,6 +191,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;b2&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 
+            <span class="c"># creating legend</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+                           <span class="n">Button</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
             <span class="c"># creating in and decrease rotation speed button</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;rb1&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s">&quot;rb1&quot;</span><span class="p">)</span>
@@ -205,12 +211,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">,</span>
                            <span class="n">Button</span><span class="p">(</span><span class="s">&quot;tb2&quot;</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-
-            <span class="c"># creating legend</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">button_textures_on</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">o</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span>
-                           <span class="n">Button</span><span class="p">(</span><span class="s">&quot;legend&quot;</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 
             <span class="c"># close button view</span>
