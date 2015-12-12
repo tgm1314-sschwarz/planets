@@ -104,7 +104,7 @@ def main():
     display = (800, 600)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
-    bg = image('../pics/earthmap.jpg')
+    bg = image('../planets/pics/earthmap.jpg')
     setup(bg)
 
     gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)

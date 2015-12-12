@@ -66,6 +66,12 @@ class SolarSystem(SolarSystemFactory):
             self.o = Button("b2")
             self.o.create()
 
+            # creating legend
+            self.c.button_textures_on("legend")
+            self.o = Color(.0, .0, .0,
+                           Button("legend"))
+            self.o.create()
+
             # creating in and decrease rotation speed button
             self.c.button_textures_on("rb1")
             self.o = Button("rb1")
@@ -80,12 +86,6 @@ class SolarSystem(SolarSystemFactory):
             self.o.create()
             self.o = Color(.7, .7, .7,
                            Button("tb2"))
-            self.o.create()
-
-            # creating legend
-            self.c.button_textures_on("legend")
-            self.o = Color(.0, .0, .0,
-                           Button("legend"))
             self.o.create()
 
             # close button view
