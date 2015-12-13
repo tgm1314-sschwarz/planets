@@ -6,17 +6,23 @@
 Solar System
 ============
 
-Bibliographic fields:
----------------------
-   :Author:  Gala M. & Schwarz S.
-   :organization: TGM-Wien
-   :date: 2015-12-08
-   :status: "done"
-   :revision: 1.0
-   :version: 1.0
++-------------------------------------------------------------+
+| Bibliographic fields                                        |
++================+======================+============+========+
+| :author:       | Gala M. & Schwarz S. | :status:   | "done" |
++----------------+----------------------+------------+--------+
+| :organization: | TGM-Wien             | :revision: | 1.0    |
++----------------+----------------------+------------+--------+
+| :date:         | 2015-12-08           | :version:  | 1.0    |
++----------------+----------------------+------------+--------+
 
-Contents:
----------
+.. sidebar:: Indices and tables
+    
+    * :ref:`genindex`
+    * :ref:`modindex`
+    * :ref:`search`
+
+**Contents:**
 
 .. toctree::
    :maxdepth: 2
@@ -38,12 +44,3 @@ Contents:
    Ring
    Rotation
    Translation
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
