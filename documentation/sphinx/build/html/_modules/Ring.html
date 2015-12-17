@@ -132,12 +132,25 @@
 
 
 <div class="viewcode-block" id="Ring"><a class="viewcode-back" href="../Ring.html#Ring.Ring">[docs]</a><span class="k">class</span> <span class="nc">Ring</span><span class="p">(</span><span class="n">ObjectDecorator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that creates a torus for a planet (saturn ring)</span>
 
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`__init__`: sets the radius parameter and the Planet Object</span>
+<span class="sd">        * :func:`create`: Creates and draws a WireTorus Object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Ring.__init__"><a class="viewcode-back" href="../Ring.html#Ring.Ring.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param r: radius parameter</span>
+<span class="sd">        :param p: Planet Object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
 </div>
 <div class="viewcode-block" id="Ring.create"><a class="viewcode-back" href="../Ring.html#Ring.Ring.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creats the glutWireTour in a Push and Pop Matrix</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">glPushMatrix</span><span class="p">()</span>
 
         <span class="n">glColor3f</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">)</span>

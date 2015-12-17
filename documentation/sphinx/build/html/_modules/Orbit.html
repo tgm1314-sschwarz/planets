@@ -132,8 +132,19 @@
 
 
 <div class="viewcode-block" id="Orbit"><a class="viewcode-back" href="../Orbit.html#Orbit.Orbit">[docs]</a><span class="k">class</span> <span class="nc">Orbit</span><span class="p">(</span><span class="n">ObjectDecorator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that creates a torus orbit for the planets</span>
 
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`__init__`: sets the radius parameter and the Planet Object and lats and longs</span>
+<span class="sd">        * :func:`create`: Creates and draws a WireTorus Object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Orbit.__init__"><a class="viewcode-back" href="../Orbit.html#Orbit.Orbit.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        sets the button name</span>
+<span class="sd">        :param r: radius</span>
+<span class="sd">        :param p: planet object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
 
@@ -141,6 +152,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">longs</span> <span class="o">=</span> <span class="mi">100</span>
 </div>
 <div class="viewcode-block" id="Orbit.create"><a class="viewcode-back" href="../Orbit.html#Orbit.Orbit.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        creates a glutWireTorus Object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">glPushMatrix</span><span class="p">()</span>
 
         <span class="n">glRotatef</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">)</span>

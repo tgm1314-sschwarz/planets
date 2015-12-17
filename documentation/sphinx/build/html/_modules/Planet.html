@@ -131,8 +131,17 @@
 
 
 <div class="viewcode-block" id="Planet"><a class="viewcode-back" href="../Planet.html#Planet.Planet">[docs]</a><span class="k">class</span> <span class="nc">Planet</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The class Planet is used to create round Objects that represent Plantes.</span>
+<span class="sd">        **methods**:</span>
+<span class="sd">        * :func:`__init__`: creates variables for the attributes of the sphere.</span>
+<span class="sd">        * :func:`create`: creates the sphere.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Planet.__init__"><a class="viewcode-back" href="../Planet.html#Planet.Planet.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param r: radius</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">gluNewQuadric</span><span class="p">()</span>
@@ -140,6 +149,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">longs</span> <span class="o">=</span> <span class="mi">30</span>
 </div>
 <div class="viewcode-block" id="Planet.create"><a class="viewcode-back" href="../Planet.html#Planet.Planet.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        creates a Sphere</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">gluQuadricTexture</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">gluSphere</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lats</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longs</span><span class="p">)</span></div></div>
 </pre></div>

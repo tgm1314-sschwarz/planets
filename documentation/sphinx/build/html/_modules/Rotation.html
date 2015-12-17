@@ -131,8 +131,21 @@
 
 
 <div class="viewcode-block" id="Rotation"><a class="viewcode-back" href="../Rotation.html#Rotation.Rotation">[docs]</a><span class="k">class</span> <span class="nc">Rotation</span><span class="p">(</span><span class="n">ObjectDecorator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that is responsible for the rotation</span>
 
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`__init__`: sets the rotation parameters</span>
+<span class="sd">        * :func:`create`: adds the parameters to Rotatef</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Rotation.__init__"><a class="viewcode-back" href="../Rotation.html#Rotation.Rotation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param deg: degrees parameter</span>
+<span class="sd">        :param x: x coordinate</span>
+<span class="sd">        :param y: y coordinate</span>
+<span class="sd">        :param z: z coordinate</span>
+<span class="sd">        :param p: Planet object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deg</span> <span class="o">=</span> <span class="n">deg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
@@ -140,6 +153,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
 </div>
 <div class="viewcode-block" id="Rotation.create"><a class="viewcode-back" href="../Rotation.html#Rotation.Rotation.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Rotates a Object Planet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">glRotatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">create</span><span class="p">()</span></div></div>
 </pre></div>

@@ -131,14 +131,28 @@
 
 
 <div class="viewcode-block" id="Translation"><a class="viewcode-back" href="../Translation.html#Translation.Translation">[docs]</a><span class="k">class</span> <span class="nc">Translation</span><span class="p">(</span><span class="n">ObjectDecorator</span><span class="p">):</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the class translation is used to translate the coordinates.</span>
+<span class="sd">        **methods**:</span>
+<span class="sd">        * :func:`__init__`: sets the coordinates.</span>
+<span class="sd">        * :func:`create`: translates a planet.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Translation.__init__"><a class="viewcode-back" href="../Translation.html#Translation.Translation.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param x: x coordinate</span>
+<span class="sd">        :param y: y coordinate</span>
+<span class="sd">        :param z: z coordinate</span>
+<span class="sd">        :param p: Planet object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
 </div>
 <div class="viewcode-block" id="Translation.create"><a class="viewcode-back" href="../Translation.html#Translation.Translation.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        is used to translate planets</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">glTranslatef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">create</span><span class="p">()</span></div></div>
 </pre></div>

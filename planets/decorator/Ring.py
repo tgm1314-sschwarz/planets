@@ -7,12 +7,25 @@ __author__ = 'Gala & Schwarz'
 
 
 class Ring(ObjectDecorator):
+    """
+    Class that creates a torus for a planet (saturn ring)
 
+    **methods**:
+        * :func:`__init__`: sets the radius parameter and the Planet Object
+        * :func:`create`: Creates and draws a WireTorus Object
+    """
     def __init__(self, r, p):
+        """
+        :param r: radius parameter
+        :param p: Planet Object
+        """
         self.p = p
         self.r = r
 
     def create(self):
+        """
+        Creats the glutWireTour in a Push and Pop Matrix
+        """
         glPushMatrix()
 
         glColor3f(.8, .8, .8)

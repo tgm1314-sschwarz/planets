@@ -8,15 +8,23 @@ from planets.decorator.Translation import *
 from planets.decorator.Rotation import *
 from planets.decorator.Color import *
 from planets.decorator.Orbit import *
-from planets.decorator.Moon import *
 from planets.decorator.Ring import *
 
 __author__ = 'Gala & Schwarz'
 
 
 class SolarSystem(SolarSystemFactory):
+    """
+    Class that creates our solar system.
 
+    **methods**:
+        * :func:`__init__`: initiates all variables used to control everything.
+        * :func:`animation`: a function that keeps everything up-to-date.
+    """
     def __init__(self):
+        """
+        Creates a controller object and an object object that is used for buttons and planets.
+        """
         # Controller
         self.c = Controller()
 
@@ -27,6 +35,9 @@ class SolarSystem(SolarSystemFactory):
         self.q = gluNewQuadric()
 
     def animation(self):
+        """
+        animation is a function that creates all objects and updates them in real time.
+        """
         while True:
             # get the OpenGL coordinates of the mouse position
             self.c.get_mouse_pos()

@@ -131,11 +131,25 @@
 
 
 <div class="viewcode-block" id="Button"><a class="viewcode-back" href="../Button.html#Button.Button">[docs]</a><span class="k">class</span> <span class="nc">Button</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class button creates rectangles with textures that serve as buttons.</span>
+
+<span class="sd">    **methods**:</span>
+<span class="sd">        * :func:`__init__`: sets the button name.</span>
+<span class="sd">        * :func:`create`: defines the texture and the clickable area.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Button.__init__"><a class="viewcode-back" href="../Button.html#Button.Button.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">button_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        sets the button name</span>
+<span class="sd">        :param button_name: name of the created button</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">button_name</span>
 </div>
 <div class="viewcode-block" id="Button.create"><a class="viewcode-back" href="../Button.html#Button.Button.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        defines the texture and the clickable area.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">==</span> <span class="s">&quot;b1&quot;</span><span class="p">:</span>
             <span class="n">glBegin</span><span class="p">(</span><span class="n">GL_QUADS</span><span class="p">)</span>
 

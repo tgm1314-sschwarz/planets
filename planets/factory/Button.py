@@ -6,11 +6,25 @@ __author__ = 'Gala & Schwarz'
 
 
 class Button(Object):
+    """
+    Class button creates rectangles with textures that serve as buttons.
+
+    **methods**:
+        * :func:`__init__`: sets the button name.
+        * :func:`create`: defines the texture and the clickable area.
+    """
 
     def __init__(self, button_name):
+        """
+        sets the button name
+        :param button_name: name of the created button
+        """
         self.n = button_name
 
     def create(self):
+        """
+        defines the texture and the clickable area.
+        """
         if self.n == "b1":
             glBegin(GL_QUADS)
 
