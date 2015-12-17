@@ -34,6 +34,9 @@ def main():
 
     glutInit()
 
+    # set up the light
+    Lighting()
+
     # starting to animate
     a = SolarSystem()
     a.animation()

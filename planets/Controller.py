@@ -41,9 +41,6 @@ class Controller:
         self.cam_y = 25.
         self.cam_z = -25.
 
-        # set up the light
-        Lighting()
-
         # planet textures
         i = LoadImages()
         self.sun_tex = i.load("pics/sunmap.jpg")
